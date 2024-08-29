@@ -24,7 +24,7 @@ This project was created to showcase the application of the Internet of Things (
 **Sensors**:
 - **Ultrasonic Sensor (HC-SR04)**: Used for measuring the fill level of the waste bins.
 - **Temperature and Humidity Sensor (DS18B20)**: Monitors the temperature inside the bins.
-- **Tilt Sensor**: Detects the tilt of the bin, indicating if the bin has been overturned.
+- **Tilt Sensor (TCSW520)**: Detects the tilt of the bin, indicating if the bin has been overturned.
 - **Smoke and Gas Sensor (MQ-2)**: Detects the presence of smoke and gases.
 - **Flame Sensor (KY-026)**: Detects the presence of flames.
 - **RFID Reader (MFRC-522)**: Identifies bins via RFID tags.
