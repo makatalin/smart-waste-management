@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Izvještaji o spremnicima</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@latest"></script> 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="izvjestaji.css">
+</head>
+<body>
+    <div id="navbar">
+        <a href="/" class="active">Spremnici</a>
+        <a href="/korisnici">Korisnici</a>
+        <a href="/izvjestaji">Izvještaji</a>
+    </div>
+    <div id="content">
+        <div class="date-picker-container">
+            <div class="date-picker-item">
+                <label for="start-date">Period od:</label>
+                <div id="start-date"></div>
+            </div>
+            <div class="date-picker-item">
+                <label for="end-date">Period do:</label>
+                <div id="end-date"></div>
+            </div>
+        </div>
+        <div class="chart-container-wrapper">
+            <div class="chart-container">
+                <canvas id="wasteAmountChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <canvas id="wasteVolumePieChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <canvas id="averageFillLevelChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <canvas id="averageFillLevelByAreaChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <canvas id="overflowCountChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <canvas id="emptyingFrequencyChart"></canvas>
+            </div>
+        </div>
+    </div>
+    <script src="izvjestaji.js"></script>
+</body>
+</html>

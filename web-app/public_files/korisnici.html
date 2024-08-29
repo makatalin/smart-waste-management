@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Korisnici</title>
+    <link rel="stylesheet" href="korisnici.css">
+</head>
+<body>
+    <div id="navbar">
+        <a href="index.html">Spremnici</a>
+        <a href="korisnici.html" class="active">Korisnici</a>
+        <a href="izvjestaji.html">Izvještaji</a>
+    </div>
+    
+    <div id="content">
+        <button id="dodaj-korisnika-btn">Dodaj korisnika</button>
+        <!-- Polje za pretraživanje -->
+        <input type="text" id="pretraga-korisnika" placeholder="Pretraži...">
+
+        <div class="user-details-container" id="korisnici-lista">
+            <!-- Popis korisnika -->
+        </div>
+    </div>
+
+    <!-- Skrivene forme -->
+    <div id="form-container">
+        <div id="dodaj-korisnika-form" class="form-container" style="display:none;">
+            <h2>Dodaj/Uredi korisnika</h2>
+            <form>
+                <input type="hidden" id="korisnik-id" name="korisnik-id"><br>
+                <label for="ime">Ime:</label>
+                <input type="text" id="ime" name="ime" required><br>
+                <label for="prezime">Prezime:</label>
+                <input type="text" id="prezime" name="prezime" required><br>
+                <label for="ulica">Ulica:</label>
+                <input type="text" id="ulica" name="ulica" required><br>
+                <label for="broj">Broj:</label>
+                <input type="text" id="broj" name="broj" required><br>
+                <label for="grad">Grad:</label>
+                <input type="text" id="grad" name="grad" required><br>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required><br>
+                <label for="telefon">Telefon:</label>
+                <input type="phone" id="telefon" name="telefon" required><br>
+                <div id="spremnici-container">
+                    <label for="spremnici">Dodijeli spremnike:</label>
+                    <div id="dostupni-spremnici-lista">
+                        <!-- Spremnici dodijeljeni korisniku -->
+                    </div>
+                </div>
+                <div id="odjava-container" style="display: block;">
+                    <label for="odjava">Odjaviti korisnika?</label>
+                    <input type="checkbox" id="odjava" name="odjava"><br>
+                </div>
+                <button type="submit" id="spremi-btn">Spremi</button>
+                <button type="button" id="odustani">Odustani</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="korisnici.js"></script>
+</body>
+</html>

@@ -1,0 +1,407 @@
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#navbar {
+    background-color: #333;
+    overflow: hidden;
+}
+
+#navbar a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+}
+
+#navbar a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+#navbar a.active {
+    color: white;
+}
+
+.bold {
+    font-weight: bold;
+} 
+
+.form-container {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    z-index: 1000;
+    width: 300px;
+    max-height: 80vh;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+}
+
+.form-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-container form label,
+.form-container form button,
+.form-container form input,
+.form-container form select {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+input.error {
+    border: 2px solid red;
+}
+
+#container {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    padding-top: 20px;
+    box-sizing: border-box;
+}
+
+#spremnici {
+    width: 55%;
+    font-size: 13px;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    border-right: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.col-naziv { flex-basis: 12%; min-width: 50px; }
+.col-napunjenost { flex-basis: 7%; min-width: 30px; }
+.col-polozaj { flex-basis: 8%; min-width: 50px; }
+.col-temperatura { flex-basis: 8%; min-width: 60px; }
+.col-plamen { flex-basis: 6%; min-width: 50px; }
+.col-dim { flex-basis:6%; min-width: 50px; }
+.col-baterija { flex-basis: 7%; min-width: 60px; }
+.col-adresa { flex-basis: 27%; min-width: 100px; }
+.col-podrucje { flex-basis: 9%; min-width: 50px; }
+.col-vrsta { flex-basis: 11%; min-width: 50px; }
+.col-akcije { flex-basis: 5%; min-width: 100px; }
+
+/* Postavke za kolone */
+.col-naziv, .col-napunjenost, .col-polozaj, .col-temperatura, .col-plamen, .col-dim, .col-baterija, .col-adresa, .col-podrucje, .col-vrsta, .col-akcije {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+   
+}
+
+.col-naziv {
+    margin-left: 5px;
+}
+
+.spremnik-naslov {
+    position: sticky !important;
+    z-index: 1000;
+    top: 0;
+    background-color: #f1f1f1 !important;
+    font-size: 14px !important;
+    font-weight: bold !important;
+    padding: 0 10px !important;
+}
+
+.spremnik-item {
+    display: flex;
+    height: 2.5vh;
+    padding: 0 5px; /* Prostor unutar svakog stupca redaka */
+    border-bottom: 1px solid #eeeeee;
+    box-sizing: border-box;
+}
+
+.spremnik-item span {
+    height: 100%;
+}
+
+
+.col-akcije {
+    display: flex;
+    justify-content: flex-end;
+    gap: 5px;
+    align-items: center;
+}
+
+/* Tooltip ako se ne vidi cijela adresa */
+.col-adresa {
+    position: relative;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 100%;
+}
+
+.col-adresa::after {
+    content: attr(data-full-address);
+    position: absolute;
+    left: 0;
+    top: 100%;
+    transform: translateY(-20px);
+    white-space: nowrap;
+    background-color: #333;
+    color: #fff;
+    padding: 4px 6px;
+    font-size: 11px;
+    border-radius: 5px;
+    z-index: 1000;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    max-height: none;
+    max-width: 300px;
+    visibility: hidden;
+    overflow: visible;
+}
+
+/* Tooltip je vidljiv samo ako se ne vidi cijela adresa */
+.col-adresa[data-full-address]:hover::after {
+    visibility: visible;
+}
+
+
+.spremnik-item .actions {
+    display: flex;
+    justify-content: flex-start;
+    gap: 5px;
+    align-items: center;
+}
+
+.spremnik-item.selected {
+    background-color: #d0eaff;
+}
+
+.spremnik-item.prevrnut {
+    background-color: #ffd0d0;
+}
+
+.spremnik-item.prevrnut .warning {
+    color: red;
+    font-weight: bold;
+}
+
+button.update-btn,
+button.delete-btn {
+    padding: 2px 5px;
+    font-size: 12px;
+    height: auto;
+    line-height: 1.2;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    color: black;
+}
+
+button.update-btn {
+    background-color: #e4e4e4;
+}
+
+button.delete-btn {
+    background-color: #f1bdb9;
+}
+
+button.update-btn:hover,
+button.delete-btn:hover {
+    opacity: 0.8;
+}
+
+#dodaj-spremnik-btn {
+    padding: 8px 15px;
+    font-size: 14px;
+    border-radius: 5px;
+    background-color: #d3d3d3;
+    color: black;
+    border: none;
+    cursor: pointer;
+    margin: 10px 0;
+}
+
+#pretraga-spremnika {
+    margin: 10px 0;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+#dodaj-spremnik-form {
+    display: none;
+}
+
+#map-container {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 5px;
+    margin-right: 5px;
+    box-sizing: border-box;
+}
+
+#mapa {
+    height: 65%;
+}
+
+#map {
+    width: 100%;
+    height: 100%;
+}
+
+#summary {
+    display: flex;
+    padding: 5px 0;
+}
+
+.summary-box {
+    background: white;
+    padding: 20px;
+    text-align: left;
+    flex: 1 1 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.summary-box h3 {
+    margin: 0;
+    margin-bottom: 5px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.summary-box span {
+    font-size: 14px;
+    font-weight: normal;
+    margin-top: 5px;
+}
+
+.alarm {
+    background-color: #ffe6e6; /* Lagano roza boja */
+    padding: 10px;
+    border: 1px solid #ff6666; /* Lagano crvena boja */
+    margin-top: 10px;
+}
+
+.warning {
+    background-color: #fff0e6; /* Lagano narančasta boja */
+}
+  
+.highlight {
+    font-weight: bold;
+    color: #f13636; /* Lagano crvena boja */
+}
+
+.numbered-icon .number {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 50%;
+    padding: 2px 6px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+#show-route-btn {
+    padding: 10px 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    background-color: #d3d3d3;
+    color: black;
+    border: none;
+    cursor: pointer;
+    margin: 10px 0; /* Razmak iznad i ispod gumba */
+    max-width: 180px; /* Maksimalna širina gumba */
+}
+
+#show-route-btn:hover {
+    background-color: #a9a9a9; /* Tamnije siva kad je dugme pritisnuto */
+}
+
+#show-route-btn:active {
+    background-color: #696969; /* Tamno siva kad je dugme pritisnuto */
+}
+
+.invisible {
+    visibility: hidden; /* Čini element nevidljivim, ali zauzima prostor */
+}
+
+.hidden {
+    display: none;
+}
+
+.red {
+    background-color: #ffcccc;
+}
+
+.orange {
+    background-color: #ffebcc;
+}
+
+.green {
+    background-color: #ccffcc;
+}
+
+.blink-row {
+    color: #f13636;
+    animation: rowBlinker 2.5s linear infinite;
+}
+
+.blink-card {
+    animation: cardBlinker 2.5s linear infinite;
+    background-color: #ffcccc;
+}
+
+.blink-marker {
+    animation: markerBlinker 1.5s linear infinite;
+}
+
+@keyframes rowBlinker {
+    0%, 100% {
+        opacity: 1;
+        font-weight: bold;
+    }
+    50% {
+        opacity: 0;
+        font-weight: bold;
+    }
+}
+
+@keyframes cardBlinker {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+
+@keyframes markerBlinker {
+    0%, 100% {
+        box-shadow: 0 0 0 rgba(255, 0, 0, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 10px 5px rgba(255, 0, 0, 0.8);
+    }
+    100% {
+        box-shadow: 0 0 0 rgba(255, 0, 0, 0.5);
+    }
+}
+
+
+  

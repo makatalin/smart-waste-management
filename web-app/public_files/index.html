@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pametni Otpad</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="navbar">
+        <a href="index.html">Spremnici</a>
+        <a href="/korisnici">Korisnici</a>
+        <a href="/izvjestaji">Izvještaji</a>
+    </div>
+    
+    <div id="container">
+        <div id="spremnici">
+            <div id="spremnici-header">
+                <button id="dodaj-spremnik-btn">Dodaj spremnik</button>
+                <input type="text" id="pretraga-spremnika" placeholder="Pretraži...">
+              </div>
+            <div id="spremnici-lista">
+                <!-- Popis spremnika -->
+            </div>
+        </div>
+        <div id="map-container">
+            <button id="show-route-btn">Prikaži optimiziranu rutu</button>
+            <div id="mapa">
+                <div id="map"></div>
+            </div>
+            <div id="summary">
+                <div class="summary-box">
+                    <h3>Spremnici</h3>
+                    <span id="total-bins-count">Ukupno: 0</span>
+                    <span id="overturned-bins-count">Prevrnuto: 0</span>
+                    <span id="high-temp-count">Iznad 80°C: 0</span>
+                    <span id="fire-detected">Plamen: 0</span>
+                    <span id="smoke-detected">Dim: 0</span>
+                    <span id="pozar">Požar: 0</span>
+
+                </div>
+                <div class="summary-box red">
+                    <h3>75%+</h3>
+                    <span id="bins-75-count">Ukupno: 0</span>
+                    <span id="avg-fill-75">Prosječna napunjenost: 0%</span>
+                </div>
+                <div class="summary-box orange">
+                    <h3>51%-74%</h3>
+                    <span id="bins-51-74-count">Ukupno: 0</span>
+                    <span id="avg-fill-51-74">Prosječna napunjenost: 0%</span>
+                </div>
+                <div class="summary-box green">
+                    <h3>0%-50%</h3>
+                    <span id="bins-0-50-count">Ukupno: 0</span>
+                    <span id="avg-fill-0-50">Prosječna napunjenost: 0%</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Skrivene forme -->
+    <div id="form-container">
+        <div id="dodaj-spremnik-form" class="form-container" style="display:none;">
+            <h2>Dodaj/Uredi Spremnik</h2>
+            <form>
+                <input type="hidden" id="spremnik-id" name="spremnik-id"><br>
+                <label for="naziv">Naziv:</label>
+                <input type="text" id="naziv" name="naziv" required><br>
+                <label for="rfid">RFID:</label>
+                <input type="text" id="rfid" name="rfid" required><br>
+                <label for="lat">Latitude:</label>
+                <input type="number" step="any" id="lat" name="lat" min="0" required><br>
+                <label for="lng">Longitude:</label>
+                <input type="number" step="any" id="lng" name="lng" min="0" required><br>
+                <label for="volumen">Volumen:</label>
+                <input type="text" id="volumen" required>
+                <label for="podrucje">Područje:</label>
+                <input type="text" id="podrucje" name="podrucje">
+                <label for="vrsta">Vrsta otpada:</label>
+                <select id="vrsta" name="vrsta_otpad">
+                    <option value="Plastika">Plastika</option>
+                    <option value="Papir">Papir</option>
+                    <option value="Staklo">Staklo</option>
+                    <option value="Biootpad">Biootpad</option>
+                    <option value="Ostalo">Ostalo</option>
+                </select>
+                <label for="napunjenost">Napunjenost (%):</label>
+                <input type="number" id="napunjenost" name="napunjenost" step="0.01" min="0" required><br>
+                <label for="temperatura">Temperatura (°C):</label>
+                <input type="number" id="temperatura" name="temperatura" step="0.01" required><br>
+                <label for="plamen">Plamen:</label>
+                <select id="plamen" name="plamen" required>
+                    <option value="none" selected disabled>Odaberite...</option>
+                    <option value="true">Da</option>
+                    <option value="false">Ne</option>
+                </select><br>
+                <label for="polozaj">Položaj spremnika:</label>
+                <select id="polozaj" name="polozaj" required>
+                    <option value="none" selected disabled>Odaberite...</option>
+                    <option value="false">Ispravan</option>
+                    <option value="true">Prevrnut</option>
+                </select><br>
+                <label for="baterija">Baterija (%):</label>
+                <input type="number" id="baterija" name="baterija" step="0.01" min="0" required><br>
+                <label for="dim">Dim:</label>
+                <select id="dim" name="dim" required>
+                    <option value="none" selected disabled>Odaberite...</option>
+                    <option value="true">Da</option>
+                    <option value="false">Ne</option>
+                </select><br>
+                <button type="submit" id="spremi-btn">Spremi</button>
+                <button type="button" id="odustani">Odustani</button>
+            </form>
+        </div>
+    </div>
+    <script type="module" src="main.js"></script>
+    <script type="module" src="map.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBon6MM4Eszyv8o3MAaO0xYOHKZq1dcP1Y&loading=async"></script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+</body>
+</html>

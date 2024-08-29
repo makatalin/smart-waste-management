@@ -1,0 +1,191 @@
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+#navbar {
+    background-color: #333;
+    overflow: hidden;
+}
+
+#navbar a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+}
+
+#navbar a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+#navbar a.active {
+    color: white;
+}
+
+#content {
+    padding-top: 20px;
+}
+
+.form-container {
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    z-index: 1000;
+    width: 300px;
+    height: auto;
+    max-height: 80vh;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+}
+
+.form-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-container form label,
+.form-container form button,
+.form-container form input,
+.form-container form select {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    
+}
+
+#korisnici-lista .korisnik-item {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.korisnik-item > div {
+    flex: 1;
+    text-align: left;
+}
+
+.spremnici-lista {
+    margin-left: 20px;
+    padding-left: 20px;
+    border-left: 1px solid #ddd;
+}
+
+#dostupni-spremnici-lista div {
+    display: flex;
+    align-items: center;
+}
+
+#dostupni-spremnici-lista label {
+    margin-left: 8px; /* Razmak između checkboxa i naziva */
+}
+
+#dodaj-korisnika-btn {
+    padding: 8px 15px;
+    font-size: 14px;
+    border-radius: 5px;
+    background-color: #d3d3d3;
+    color: black;
+    border: none;
+    cursor: pointer;
+    margin: 10px 0;
+}
+
+#pretraga-korisnika {
+    margin: 10px 0;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+button.update-btn,
+button.delete-btn {
+    padding: 5px 10px;
+    font-size: 12px;
+    cursor: pointer;
+    flex: 0 1 auto;
+    width: auto;
+    height: 30px;
+    color: black;
+    border: none;
+    border-radius: 4px;
+}
+
+button.update-btn {
+    background-color: #e4e4e4;
+}
+
+button.delete-btn {
+    background-color: #f1bdb9;
+}
+
+button.update-btn:hover,
+button.delete-btn:hover {
+    opacity: 0.8;
+}
+
+.korisnik-red {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border-bottom: 1px solid #ddd;
+    padding: 5px 0;
+}
+
+.korisnik-zaglavlje {
+    position: sticky !important;
+    z-index: 1000;
+    top: 0;
+    background-color: #f1f1f1;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.korisnik-podaci {
+    display: flex;
+    width: 100%;
+}
+
+.korisnik-stupac {
+    flex: 1;
+    text-align: left;
+    padding: 0 10px;
+    flex-direction: column;
+    font-size: 14px;
+}
+
+.col-ime { flex-basis: 10%; }
+.col-email { flex-basis: 12%; }
+.col-telefon { flex-basis: 8%; }
+.col-adresa { flex-basis: 12%; }
+.col-grad { flex-basis: 8%; }
+.col-registracija { flex-basis: 10%; }
+.col-odjava { flex-basis: 10%; }
+.col-spremnici { flex-basis: 8%; }
+.col-podrucje { flex-basis: 8%; }
+.col-akcije { flex-basis: 10%; }
+
+.update-btn, .delete-btn {
+    margin: 5px;
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
