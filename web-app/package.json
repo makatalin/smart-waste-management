@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "generate-data": "node scripts/generateMockData.js",
-    "generate-readings": "node scripts/generateMockReadings.js"
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "Mario Katalinic",
