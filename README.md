@@ -53,5 +53,5 @@ This project was developed to demonstrate the use of the Internet of Things (IoT
 3. **Web Application**: Displays real-time data, manages users, and optimizes collection routes.
 
 ## Contact
-Email: mario.katalinic@gmail.com
-LinkedIn: linkedin.com/in/mario-katalinic-47013287
+- Email: mario.katalinic@gmail.com
+- LinkedIn: linkedin.com/in/mario-katalinic-47013287
