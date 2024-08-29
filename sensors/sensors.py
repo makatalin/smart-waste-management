@@ -342,7 +342,7 @@ def send_data():
         time.sleep(15)  # Repeat every 15 seconds
         if ocitanja:
             try:
-                url = 'SERVER_URL'
+                url = 'YOUR_SERVER_URL'
                 for ocitanje in ocitanja:
                     ocitanje['plamen'] = 1 if ocitanje['plamen'] else 0
                     ocitanje['polozaj'] = 1 if ocitanje['polozaj'] else 0
