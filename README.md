@@ -8,7 +8,6 @@
 - [Key Features](#key-features)
 - [Project Structure](#project-structure)
 - [How It Works](#how-it-works)
-- [Contact](#contact)
 
 ## About the Project
 This project was created to showcase the application of the Internet of Things (IoT) in waste management. Developed as part of the final assignment at VERN' University, it employs sensors to monitor waste bin fill levels, detect environmental conditions, and optimize waste collection routes. The system's core includes a Raspberry Pi for processing sensor data and a web application that provides real-time data visualization and management.
@@ -52,6 +51,3 @@ This project was created to showcase the application of the Internet of Things (
 2. **Raspberry Pi**: Central unit that processes sensor data and communicates with the web application.
 3. **Web Application**: Displays real-time data, manages users, and optimizes collection routes.
 
-## Contact
-- Email: mario.katalinic@gmail.com
-- LinkedIn: https://www.linkedin.com/in/mario-katalinic-47013287
