@@ -10,6 +10,7 @@ This project was developed to demonstrate the use of the Internet of Things (IoT
 - **Connectivity**: Wi-Fi, Bluetooth 5.0, Gigabit Ethernet
 - **GPIO**: 40-pin GPIO header for sensor connections
 - **Operating System**: Raspbian OS
+  
 **Sensors**:
 - **Ultrasonic Sensor (HC-SR04)**: Used for measuring the fill level of the waste bins.
 - **Temperature and Humidity Sensor (DS18B20)**: Monitors the temperature inside the bins.
@@ -18,11 +19,12 @@ This project was developed to demonstrate the use of the Internet of Things (IoT
 - **Flame Sensor (KY-026)**: Detects the presence of flames.
 - **RFID Reader (MFRC-522)**: Identifies bins via RFID tags.
 - **GPS Module (u-blox NEO-6M)**: Precisely locates bins.
+  
 **Web Application**:
 - **Backend**: Node.js, Express.js
 - **Frontend**: HTML, CSS, JavaScript, Google Maps API
 - **Database**: SQLite
-- 
+  
 ## Key Features
 - **Real-Time Monitoring**: Sensors track fill levels, temperature, tilt, and detect fire or smoke in waste bins.
 - **Route Optimization**: The system computes the most efficient waste collection routes based on sensor data.
