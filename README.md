@@ -1,6 +1,16 @@
 # Smart Waste Management
+
 ![Smart Waste Management Dashboard](gallery/4_Web_app_dashboard.png)
 
+## Table of Contents
+- [About the Project](#about-the-project)
+- [Technologies Used](#technologies-used)
+- [Key Features](#key-features)
+- [Project Structure](#project-structure)
+- [How It Works](#how-it-works)
+- [Contact](#contact)
+
+## About the Project
 This project was developed to demonstrate the use of the Internet of Things (IoT) in waste management. It is part of the final assignment program at VERN' University. It uses sensors to monitor waste bin fill levels, detect environmental conditions, and optimize waste collection routes. The core components include a Raspberry Pi, which processes sensor data, and a web application for real-time data visualization and management.
 
 ## Technologies Used
@@ -24,11 +34,13 @@ This project was developed to demonstrate the use of the Internet of Things (IoT
 - **Backend**: Node.js, Express.js
 - **Frontend**: HTML, CSS, JavaScript, Google Maps API
 - **Database**: SQLite
-  
+
 ## Key Features
 - **Real-Time Monitoring**: Sensors track fill levels, temperature, tilt, and detect fire or smoke in waste bins.
-- **Route Optimization**: The system computes the most efficient waste collection routes based on sensor data.
+- **Route Optimization**: Algorithms optimize waste collection routes based on current traffic conditions and bin locations.
 - **Web Application**: A user interface to manage bins, view real-time data, and generate reports.
+- **User Management**: Adding and editing users, and linking them to specific bins.
+- **Report Generation**: Analyze data through interactive charts showing long-term trends in bin fill levels and emptying frequency.
 - **Scalability**: The system can easily scale to accommodate more bins and sensors.
 
 ## Project Structure
@@ -40,6 +52,6 @@ This project was developed to demonstrate the use of the Internet of Things (IoT
 2. **Raspberry Pi**: Central unit that processes sensor data and communicates with the web application.
 3. **Web Application**: Displays real-time data, manages users, and optimizes collection routes.
 
-## Technologies Used
-- **Hardware**: Raspberry Pi, Ultrasonic sensor, Temperature sensor, Tilt sensor, GPS module, RFID reader.
-- **Software**: Python, Node.js, Express.js, SQLite.
+## Contact
+Email: mario.katalinic@gmail.com
+LinkedIn: linkedin.com/in/mario-katalinic-47013287
