@@ -1,5 +1,5 @@
 # Smart Waste Management
-![Smart Waste Management Dashboard](4_Web_app_dashboard.png)
+![Smart Waste Management Dashboard](smart-waste-management/gallery/4_Web_app_dashboard.png)
 
 This project is an IoT-based system designed to enhance waste management efficiency. It is part of the final assignment program at VERN' University. It uses sensors to monitor waste bin fill levels, detect environmental conditions, and optimize waste collection routes. The core components include a Raspberry Pi, which processes sensor data, and a web application for real-time data visualization and management.
 
