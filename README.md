@@ -48,7 +48,6 @@ This project was created to showcase the application of the Internet of Things (
 ## Project Structure
 - **sensors/**: Contains Raspberry Pi script responsible for gathering sensor data and sending it to the server.
 - **web-app/**: A web application that displays real-time data, manages users, and optimizes waste collection routes.
-- **email-service/**: Contains the script for managing automated email notifications.
 
 ## How It Works
 1. **Sensors**: Measure waste bin fill levels, temperature, tilt, and detect fire or smoke.
