@@ -31,7 +31,7 @@ This project was created to showcase the application of the Internet of Things (
   
 **Web Application**:
 - **Backend**: Node.js, Express.js
-- **Frontend**: HTML, CSS, JavaScript, Google Maps API
+- **Frontend**: HTML, CSS, JavaScript, Google Maps API, Google Traffic API
 - **Database**: SQLite
 
 ## Key Features
