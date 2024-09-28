@@ -4,4 +4,4 @@ working_directory = "./web-app"
 command = "npm install"
 
 [phases.start]
-command = "npm start"
+command = "npm server.js"
