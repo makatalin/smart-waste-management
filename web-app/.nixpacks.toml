@@ -1,0 +1,10 @@
+[phases.setup]
+working_directory = "./web-app"
+
+command = "npm install"
+
+[phases.build]
+command = ""
+
+[phases.start]
+command = "npm start"
