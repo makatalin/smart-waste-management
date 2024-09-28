@@ -3,7 +3,7 @@ working_directory = "./web-app"
 command = "npm install"
 
 [phases.build]
-command = "npm run build"
+command = ""
 
 [phases.start]
 command = "npm start"
