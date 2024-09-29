@@ -173,24 +173,29 @@ async function loadUserSpremnici(userId, container) {
 function addOdjavaListener() {
     const odjavaCheckbox = document.getElementById('odjava');
     if (odjavaCheckbox) {
-        odjavaCheckbox.addEventListener('change', function(event) {
+        // Uklanjanje postojećeg listenera ako postoji
+        const newCheckbox = odjavaCheckbox.cloneNode(true);
+        odjavaCheckbox.parentNode.replaceChild(newCheckbox, odjavaCheckbox);
+
+        newCheckbox.addEventListener('change', function(event) {
             if (event.target.checked) {
+                // Prikaz poruke samo ako je korisnik označio odjavu
                 const confirmation = window.confirm('Jeste li sigurni da želite odjaviti korisnika? Dodijeljeni spremnici će se ukloniti.');
                 if (!confirmation) {
-                    event.target.checked = false; // Poništavanje promjene
+                    event.target.checked = false; // Poništavanje promjene ako korisnik odustane
                 } else {
-                    // Ako je korisnik kliknuo "OK", čišćenje svih checkboxa spremnika
+                    // Ako korisnik potvrdi odjavu, čišćenje svih spremnika
                     const checkboxes = document.querySelectorAll('input[name="spremnici"]');
                     checkboxes.forEach(checkbox => checkbox.checked = false);
                 }
             } else {
-                // Prikazivanje poruke prilikom ponovne prijave korisnika
+                // Prikazivanje poruke samo ako korisnik poništava odjavu (želi ponovno prijaviti korisnika)
                 const confirmation = window.confirm('Želite li ponovno prijaviti korisnika?');
                 if (!confirmation) {
-                    event.target.checked = true; // Poništavanje promjene
+                    event.target.checked = true; // Poništavanje promjene ako korisnik odustane
                 }
             }
-        }, { once: true }); // Događaj se pokreće samo jedanput (da se ne duplira)
+        });
     }
 }
 
