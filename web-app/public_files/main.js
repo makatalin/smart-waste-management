@@ -505,6 +505,19 @@ function calculateIrregularities(bin) {
   return nepravilnosti;
 }
 
+// Funkcija za dohvaćanje API ključa sa servera
+async function getApiKey() {
+    try {
+        const response = await fetch('/api/key');
+        const data = await response.json();
+        return data.apiKey;
+    } catch (error) {
+        console.error('Greška prilikom dohvaćanja API ključa:', error);
+        return null;
+    }
+}
+
+
 // Funkcija za dohvaćanje adrese iz koordinata
 async function fetchAddress(lat, lng) {
   if (!lat || !lng || lat === 0 || lng === 0) {
@@ -513,7 +526,13 @@ async function fetchAddress(lat, lng) {
   }
 
   try {
-    const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=API_KEY`);
+    const apiKey = await getApiKey();
+        if (!apiKey) {
+            console.error('API ključ nije dostupan');
+            return 'Greška prilikom dohvaćanja API ključa';
+        }
+
+    const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${apiKey}`);
     const data = await response.json();
 
     if (data.status === "OK" && data.results.length > 0) {

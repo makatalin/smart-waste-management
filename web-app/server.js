@@ -71,6 +71,11 @@ app.get('/izvjestaji', (req, res) => {
     res.sendFile(__dirname + '/public_files/izvjestaji.html');
 });
 
+// Ruta za slanje API_KEY kao JSON
+app.get('/api/key', (req, res) => {
+    res.json({ apiKey: process.env.API_KEY });
+});
+
 app.listen(port, '0.0.0.0', () => {
     console.log(`Aplikacija sluša na portu ${port}`)
 })
