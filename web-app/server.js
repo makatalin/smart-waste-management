@@ -4,6 +4,13 @@ const port = process.env.PORT || 3000;
 
 require('dotenv').config();
 
+// Pristup varijablama iz .env datoteke
+const apiKey = process.env.API_KEY;
+const emailUser = process.env.EMAIL_USER;
+const clientId = process.env.CLIENT_ID;
+const clientSecret = process.env.CLIENT_SECRET;
+const refreshToken = process.env.REFRESH_TOKEN;
+
 app.use(express.json());
 
 // Inicijalizacija globalne varijable za praćenje SSE klijenata
