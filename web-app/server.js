@@ -1,6 +1,6 @@
 const express = require("express")
 const app = express()
-const port = 3003;
+const port = process.env.PORT || 3003;
 
 require('dotenv').config();
 
@@ -64,6 +64,6 @@ app.get('/izvjestaji', (req, res) => {
     res.sendFile(__dirname + '/public_files/izvjestaji.html');
 });
 
-app.listen(port, () => {
+app.listen(port, '0.0.0.0', () => {
     console.log(`Aplikacija sluša na portu ${port}`)
 })
