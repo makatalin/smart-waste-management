@@ -513,7 +513,7 @@ async function fetchAddress(lat, lng) {
   }
 
   try {
-    const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=YOUR_API_KEY`);
+    const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=API_KEY`);
     const data = await response.json();
 
     if (data.status === "OK" && data.results.length > 0) {
