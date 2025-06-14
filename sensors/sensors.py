@@ -423,7 +423,7 @@ try:
             GPIO.output(ledGreen, GPIO.HIGH)
             GPIO.output(ledRed, GPIO.LOW)
         except Exception as e:
-            print("System error: {e}")
+            print(f"System error: {e}")
             GPIO.output(ledGreen, GPIO.LOW)
             GPIO.output(ledRed, GPIO.HIGH)
             
