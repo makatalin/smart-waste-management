@@ -15,8 +15,6 @@
 ## About the Project
 This project was created to showcase the application of the Internet of Things (IoT) in waste management. It employs sensors to monitor waste bin fill levels, detect environmental conditions, and optimize waste collection routes. The system's core includes a Raspberry Pi for processing sensor data and a web application that provides real-time data visualization and management.
 
-Developed as part of the final assignment at VERN' University.
-
 ## Technologies Used
 **Raspberry Pi 4B**:
 - **Processor**: Quad-core Cortex-A72 (ARM v8) 64-bit SoC @ 1.5GHz
