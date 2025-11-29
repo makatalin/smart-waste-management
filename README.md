@@ -1,7 +1,7 @@
 # Smart Waste Management Using the Internet of Things (IoT)
 
 **Live Demo:** [Smart Waste Management Web Application](https://web-app-crimson-frog-9441.fly.dev)  
-*Note: This project showcases the application of the Internet of Things (IoT) in waste management. It is designed as an end-to-end solution that includes both Raspberry Pi sensor code and a web application. The hosted demo currently runs with mock data (no live hardware connected), while the full IoT setup can be deployed using the code in this repository. The system employs sensors to monitor waste bin fill levels, detect environmental conditions, and optimize waste collection routes. A Raspberry Pi processes sensor data and communicates with the web application, which provides real-time data visualization and management. The demo database currently contains sample data for September 2024; to see meaningful charts on the **Reports** page, please select a date range between **September 9, 2024 and September 30, 2024**.*
+*Note: The hosted demo currently runs with mock data (no live hardware connected). The demo database contains sample data for September 2024; to see meaningful charts on the **Reports** page, please select a date range between **September 9, 2024 and September 30, 2024**.*
 
 ![Smart Waste Management Dashboard](gallery/4_Web_app_dashboard.png)
 
@@ -13,7 +13,7 @@
 - [How It Works](#how-it-works)
 
 ## About the Project
-This project was created to showcase the application of the Internet of Things (IoT) in waste management. It employs sensors to monitor waste bin fill levels, detect environmental conditions, and optimize waste collection routes. The system's core includes a Raspberry Pi for processing sensor data and a web application that provides real-time data visualization and management.
+This project showcases the application of the Internet of Things (IoT) in waste management. It is designed as an end-to-end solution that includes both Raspberry Pi sensor code and a web application. The system employs sensors to monitor waste bin fill levels, detect environmental conditions, and optimize waste collection routes. A Raspberry Pi processes sensor data and communicates with the web application, which provides real-time data visualization, management and reporting.
 
 ## Technologies Used
 **Raspberry Pi 4B**:
