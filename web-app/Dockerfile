@@ -1,7 +1,7 @@
 FROM node:20
 
 # Where the app lives inside the container
-WORKDIR /app
+WORKDIR /usr/src/app
 
 # Production environment
 ENV NODE_ENV=production
