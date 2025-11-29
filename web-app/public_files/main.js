@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   async function addOrUpdateBin(binData) {
     if (!binData.lat || !binData.lng || binData.lat === 0 || binData.lng === 0) {
-        binData.address = 'Adresa nije dostupna';
+        binData.address = 'Address not available';
     } else {
       binData.address = await fetchAddress(binData.lat, binData.lng);
     }
@@ -162,10 +162,10 @@ export function filterAndSortBins(bins, searchTerm) {
       binsToDisplay = binsToDisplay.filter(bin => {
           const matchesNaziv = bin.naziv.toLowerCase().includes(searchTerm);
           const matchesNapunjenost = bin.ocitanja && bin.ocitanja.some(ocitanje => ocitanje.napunjenost.toString().includes(searchTerm));
-          const matchesPolozaj = bin.ocitanja && bin.ocitanja.some(ocitanje => ocitanje.polozaj ? 'prevrnut'.includes(searchTerm) : 'ispravan'.includes(searchTerm));
+          const matchesPolozaj = bin.ocitanja && bin.ocitanja.some(ocitanje => ocitanje.polozaj ? 'tipped over'.includes(searchTerm) : 'upright'.includes(searchTerm));
           const matchesTemperatura = bin.ocitanja && bin.ocitanja.some(ocitanje => ocitanje.temperatura.toString().includes(searchTerm));
-          const matchesPlamen = bin.ocitanja && bin.ocitanja.some(ocitanje => ocitanje.plamen ? 'da'.includes(searchTerm) : 'ne'.includes(searchTerm));
-          const matchesDim = bin.ocitanja && bin.ocitanja.some(ocitanje => ocitanje.dim ? 'da'.includes(searchTerm) : 'ne'.includes(searchTerm));
+          const matchesPlamen = bin.ocitanja && bin.ocitanja.some(ocitanje => ocitanje.plamen ? 'yes'.includes(searchTerm) : 'no'.includes(searchTerm));
+          const matchesDim = bin.ocitanja && bin.ocitanja.some(ocitanje => ocitanje.dim ? 'yes'.includes(searchTerm) : 'no'.includes(searchTerm));
           const matchesBaterija = bin.ocitanja && bin.ocitanja.some(ocitanje => ocitanje.baterija.toString().includes(searchTerm));
           const matchesAdresa = bin.address && bin.address.toLowerCase().includes(searchTerm);
           const matchesPodrucje = bin.podrucje && bin.podrucje.toLowerCase().includes(searchTerm);
@@ -469,16 +469,16 @@ function addSpremnikNaslovi() {
   naslovDiv.className = 'spremnik-naslov spremnik-item';
 
   naslovDiv.innerHTML = `
-      <span class="col-naziv">Naziv</span>
-      <span class="col-napunjenost">Pun %</span>
-      <span class="col-polozaj">Položaj</span>
+      <span class="col-naziv">Name</span>
+      <span class="col-napunjenost">Fill %</span>
+      <span class="col-polozaj">Position</span>
       <span class="col-temperatura">Temp °C</span>
-      <span class="col-plamen">Plamen</span>
-      <span class="col-dim">Dim</span>
-      <span class="col-baterija">Baterija</span>
-      <span class="col-adresa">Adresa</span>
-      <span class="col-podrucje">Područje</span>
-      <span class="col-vrsta">Vrsta otpada</span>
+      <span class="col-plamen">Flame</span>
+      <span class="col-dim">Smoke</span>
+      <span class="col-baterija">Battery</span>
+      <span class="col-adresa">Address</span>
+      <span class="col-podrucje">Area</span>
+      <span class="col-vrsta">Waste type</span>
       <span class="col-akcije"></span>
   `;
 
@@ -521,15 +521,15 @@ async function getApiKey() {
 // Funkcija za dohvaćanje adrese iz koordinata
 async function fetchAddress(lat, lng) {
   if (!lat || !lng || lat === 0 || lng === 0) {
-    console.warn('Nevažeće koordinate za dohvaćanje adrese:', lat, lng);
-    return 'Adresa nije dostupna';
+    console.warn('Invalid coordinates for fetching address:', lat, lng);
+    return 'Address not available';
   }
 
   try {
     const apiKey = await getApiKey();
         if (!apiKey) {
-            console.error('API ključ nije dostupan');
-            return 'Greška prilikom dohvaćanja API ključa';
+            console.error('API key is not available');
+            return 'Error while fetching API key';
         }
 
     const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${apiKey}`);
@@ -538,12 +538,12 @@ async function fetchAddress(lat, lng) {
     if (data.status === "OK" && data.results.length > 0) {
       return extractAddressDetails(data.results[0]);
     } else {
-      console.warn('Adresa nije pronađena za dane koordinate:', lat, lng);
-      return 'Adresa nije dostupna';
+      console.warn('Address not found for these coordinates:', lat, lng);
+      return 'Address not available';
     }
   } catch (error) {
-    console.error('Greška prilikom dohvaćanja adrese:', error);
-    return 'Greška prilikom dohvaćanja adrese';
+    console.error('Error while fetching address:', error);
+    return 'Error while fetching address';
   }
 }
 
@@ -601,17 +601,17 @@ async function createBinDiv(bin) {
     binDiv.innerHTML = `
     <span class="col-naziv bold">${bin.naziv}</span>
     <span class="col-napunjenost ${napunjenostClass}">${latestReading.napunjenost !== undefined ? latestReading.napunjenost : 'N/A'}%</span>
-    <span class="col-polozaj ${latestReading.polozaj ? 'highlight' : ''}">${latestReading.polozaj ? 'Prevrnut' : 'Ispravan'}</span>
+    <span class="col-polozaj ${latestReading.polozaj ? 'highlight' : ''}">${latestReading.polozaj ? 'Tipped over' : 'Upright'}</span>
     <span class="col-temperatura ${latestReading.temperatura > 80 ? 'highlight' : ''}">${latestReading.temperatura || 'N/A'}°C</span>
-    <span class="col-plamen ${latestReading.plamen ? 'highlight blink-row' : ''}">${latestReading.plamen ? 'Da' : 'Ne'}</span>
-    <span class="col-dim ${latestReading.dim ? 'highlight' : ''}">${latestReading.dim ? 'Da' : 'Ne'}</span>
+    <span class="col-plamen ${latestReading.plamen ? 'highlight blink-row' : ''}">${latestReading.plamen ? 'Yes' : 'No'}</span>
+    <span class="col-dim ${latestReading.dim ? 'highlight' : ''}">${latestReading.dim ? 'Yes' : 'No'}</span>
     <span class="col-baterija ${latestReading.baterija < 10 ? 'highlight' : ''}">${latestReading.baterija || 'N/A'}%</span>
     <span class="col-adresa" data-full-address="${bin.address || 'N/A'}">${bin.address || 'N/A'}</span>
     <span class="col-podrucje">${bin.podrucje || 'N/A'}</span>
     <span class="col-vrsta">${bin.vrsta_otpad || 'N/A'}</span>
     <div class="col-akcije actions">
-        <button class="update-btn" onclick='openUpdateForm(${bin.id})'>Uredi</button>
-        <button class="delete-btn" onclick="deleteContainer(${bin.id}, this)">Obriši</button>
+        <button class="update-btn" onclick='openUpdateForm(${bin.id})'>Edit</button>
+        <button class="delete-btn" onclick="deleteContainer(${bin.id}, this)">Delete</button>
     </div>
 `;
 
@@ -651,11 +651,11 @@ async function submitNewContainer() {
   try {
     const address = (spremnikData.lat && spremnikData.lng && spremnikData.lat !== 0 && spremnikData.lng !== 0)
             ? await fetchAddress(spremnikData.lat, spremnikData.lng)
-            : "Adresa nije dostupna";
+            : "Address not available";
         
     spremnikData.address = address;
 
-    console.log('Slanje podataka:', spremnikData);
+    console.log('Sending data:', spremnikData);
 
     const response = await fetch('/rest/spremnici', {
       method: 'POST',
@@ -666,9 +666,9 @@ async function submitNewContainer() {
     if (!response.ok) {
       const errorData = await response.json();
       if (response.status === 400 && errorData.error) {
-          alert('Greška: Spremnik s istim nazivom ili RFID-om već postoji.');
+          alert('Error: A bin with the same name or RFID already exists.');
       } else {
-          throw new Error(`Greška sa statusom: ${response.status}`);
+          throw new Error(`Status error: ${response.status}`);
       }
       return;
     }
@@ -692,11 +692,11 @@ async function submitNewContainer() {
       checkFillLevels();
       toggleForm('dodaj-spremnik-form');
     } else {
-      console.error('Error adding spremnik:', responseData);
+      console.error('Error adding bin:', responseData);
     }
   } catch (error) {
-    console.error('Error adding spremnik:', error);
-    alert(`Došlo je do greške prilikom dodavanja spremnika: ${error.message}`);
+    console.error('Error adding bin:', error);
+    alert(`An error occurred while adding the bin: ${error.message}`);
   }
 }
 
@@ -859,7 +859,7 @@ window.deleteContainer = async function(id, deleteBtn) {
   const marker = mapFunctions.bins[id] ? mapFunctions.bins[id].marker : null;
 
   try {
-    const confirmation = window.confirm('Jeste li sigurni da želite obrisati spremnik?');
+    const confirmation = window.confirm('Are you sure you want to delete this bin?');
         if (!confirmation) {
             return;
         }
@@ -873,7 +873,7 @@ window.deleteContainer = async function(id, deleteBtn) {
     }
 
     await response.json();
-    console.log(`Spremnik s ID-jem ${id} uspješno obrisan.`);
+    console.log(`Bin with the ID ${id} has been deleted.`);
     // Uklanjanje spremnika iz DOM-a i karte
     delete mapFunctions.bins[id];
     if (binDiv) {
@@ -960,18 +960,18 @@ async function checkFillLevels() {
   const avgFill51to74 = bins51to74 ? (totalFill51to74 / bins51to74).toFixed(2) : '0';
   const avgFill0to50 = bins0to50 ? (totalFill0to50 / bins0to50).toFixed(2) : '0';
 
-  document.getElementById('total-bins-count').textContent = `Ukupno: ${totalBins}`;
-  document.getElementById('overturned-bins-count').textContent = `Prevrnuto: ${overturnedBins}`;
-  document.getElementById('high-temp-count').textContent = `Iznad 80°C: ${highTempCount}`;
-  document.getElementById('fire-detected').textContent = `Plamen: ${fireDetected}`;
-  document.getElementById('smoke-detected').textContent = `Dim: ${smokeDetected}`;
-  document.getElementById('pozar').textContent = `Požar: ${pozarCount}`;
-  document.getElementById('bins-75-count').textContent = `Ukupno: ${bins75}`;
-  document.getElementById('avg-fill-75').textContent = `Prosječna napunjenost: ${avgFill75}%`;
-  document.getElementById('bins-51-74-count').textContent = `Ukupno: ${bins51to74}`;
-  document.getElementById('avg-fill-51-74').textContent = `Prosječna napunjenost: ${avgFill51to74}%`;
-  document.getElementById('bins-0-50-count').textContent = `Ukupno: ${bins0to50}`;
-  document.getElementById('avg-fill-0-50').textContent = `Prosječna napunjenost: ${avgFill0to50}%`;
+  document.getElementById('total-bins-count').textContent = `Total: ${totalBins}`;
+  document.getElementById('overturned-bins-count').textContent = `Tipped over: ${overturnedBins}`;
+  document.getElementById('high-temp-count').textContent = `Above 80°C: ${highTempCount}`;
+  document.getElementById('fire-detected').textContent = `Flame: ${fireDetected}`;
+  document.getElementById('smoke-detected').textContent = `Smoke: ${smokeDetected}`;
+  document.getElementById('pozar').textContent = `Fire: ${pozarCount}`;
+  document.getElementById('bins-75-count').textContent = `Total: ${bins75}`;
+  document.getElementById('avg-fill-75').textContent = `Average fill level: ${avgFill75}%`;
+  document.getElementById('bins-51-74-count').textContent = `Total: ${bins51to74}`;
+  document.getElementById('avg-fill-51-74').textContent = `Average fill level: ${avgFill51to74}%`;
+  document.getElementById('bins-0-50-count').textContent = `Total: ${bins0to50}`;
+  document.getElementById('avg-fill-0-50').textContent = `Average fill level: ${avgFill0to50}%`;
 
   const pozarRow = document.getElementById('pozar');
   if (pozarCount > 0) {
