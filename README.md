@@ -1,7 +1,7 @@
 # Smart Waste Management Using the Internet of Things (IoT)
 
 **Live Demo:** [Smart Waste Management Web Application](https://web-app-crimson-frog-9441.fly.dev)  
-*Note: This project is a demonstration of IoT applications in waste management. Currently, the application does not support live tracking of waste bins and uses mock data for demonstration purposes. Users can manually adjust data for testing. To view relevant data on the **Reports** page, please select the date range from **September 9, 2024, to September 30, 2024**.*
+*Note: This project showcases the application of the Internet of Things (IoT) in waste management. It is designed as an end-to-end solution that includes both Raspberry Pi sensor code and a web application. The hosted demo currently runs with mock data (no live hardware connected), while the full IoT setup can be deployed using the code in this repository. The system employs sensors to monitor waste bin fill levels, detect environmental conditions, and optimize waste collection routes. A Raspberry Pi processes sensor data and communicates with the web application, which provides real-time data visualization and management. The demo database currently contains sample data for September 2024; to see meaningful charts on the **Reports** page, please select a date range between **September 9, 2024 and September 30, 2024**.*
 
 ![Smart Waste Management Dashboard](gallery/4_Web_app_dashboard.png)
 
