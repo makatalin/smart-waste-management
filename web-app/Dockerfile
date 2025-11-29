@@ -1,3 +1,5 @@
+# rebuild
+
 # syntax = docker/dockerfile:1
 
 # Adjust NODE_VERSION as desired
