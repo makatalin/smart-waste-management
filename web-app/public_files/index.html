@@ -3,69 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pametni Otpad</title>
+    <title>Smart Waste Management</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="navbar">
-        <a href="index.html">Spremnici</a>
-        <a href="/korisnici">Korisnici</a>
-        <a href="/izvjestaji">Izvještaji</a>
+        <a href="index.html">Bins</a>
+        <a href="/korisnici">Users</a>
+        <a href="/izvjestaji">Reports</a>
     </div>
     
     <div id="container">
         <div id="spremnici">
             <div id="spremnici-header">
-                <button id="dodaj-spremnik-btn">Dodaj spremnik</button>
-                <input type="text" id="pretraga-spremnika" placeholder="Pretraži...">
+                <button id="dodaj-spremnik-btn">Add bin</button>
+                <input type="text" id="pretraga-spremnika" placeholder="Search...">
               </div>
             <div id="spremnici-lista">
-                <!-- Popis spremnika -->
+                <!-- List of bins -->
             </div>
         </div>
         <div id="map-container">
-            <button id="show-route-btn">Prikaži optimiziranu rutu</button>
+            <button id="show-route-btn">Show optimized route</button>
             <div id="mapa">
                 <div id="map"></div>
             </div>
             <div id="summary">
                 <div class="summary-box">
-                    <h3>Spremnici</h3>
-                    <span id="total-bins-count">Ukupno: 0</span>
+                    <h3>Bins</h3>
+                    <span id="total-bins-count">Total: 0</span>
                     <span id="overturned-bins-count">Prevrnuto: 0</span>
-                    <span id="high-temp-count">Iznad 80°C: 0</span>
-                    <span id="fire-detected">Plamen: 0</span>
-                    <span id="smoke-detected">Dim: 0</span>
-                    <span id="pozar">Požar: 0</span>
+                    <span id="high-temp-count">Above 80°C: 0</span>
+                    <span id="fire-detected">Flame: 0</span>
+                    <span id="smoke-detected">Smoke: 0</span>
+                    <span id="pozar">Fire: 0</span>
 
                 </div>
                 <div class="summary-box red">
                     <h3>75%+</h3>
-                    <span id="bins-75-count">Ukupno: 0</span>
-                    <span id="avg-fill-75">Prosječna napunjenost: 0%</span>
+                    <span id="bins-75-count">Total: 0</span>
+                    <span id="avg-fill-75">Average fill level: 0%</span>
                 </div>
                 <div class="summary-box orange">
                     <h3>51%-74%</h3>
-                    <span id="bins-51-74-count">Ukupno: 0</span>
-                    <span id="avg-fill-51-74">Prosječna napunjenost: 0%</span>
+                    <span id="bins-51-74-count">Total: 0</span>
+                    <span id="avg-fill-51-74">Average fill level: 0%</span>
                 </div>
                 <div class="summary-box green">
                     <h3>0%-50%</h3>
-                    <span id="bins-0-50-count">Ukupno: 0</span>
-                    <span id="avg-fill-0-50">Prosječna napunjenost: 0%</span>
+                    <span id="bins-0-50-count">Total: 0</span>
+                    <span id="avg-fill-0-50">Average fill level: 0%</span>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Skrivene forme -->
+    <!-- Hidden forms -->
     <div id="form-container">
         <div id="dodaj-spremnik-form" class="form-container" style="display:none;">
-            <h2>Dodaj/Uredi Spremnik</h2>
+            <h2>Add/Edit Bin</h2>
             <form>
                 <input type="hidden" id="spremnik-id" name="spremnik-id"><br>
-                <label for="naziv">Naziv:</label>
+                <label for="naziv">Name:</label>
                 <input type="text" id="naziv" name="naziv" required><br>
                 <label for="rfid">RFID:</label>
                 <input type="text" id="rfid" name="rfid" required><br>
@@ -73,44 +73,44 @@
                 <input type="number" step="any" id="lat" name="lat" min="0" required><br>
                 <label for="lng">Longitude:</label>
                 <input type="number" step="any" id="lng" name="lng" min="0" required><br>
-                <label for="volumen">Volumen:</label>
+                <label for="volumen">Volume:</label>
                 <input type="text" id="volumen" required>
-                <label for="podrucje">Područje:</label>
+                <label for="podrucje">Area:</label>
                 <input type="text" id="podrucje" name="podrucje">
-                <label for="vrsta">Vrsta otpada:</label>
+                <label for="vrsta">Waste type:</label>
                 <select id="vrsta" name="vrsta_otpad">
-                    <option value="Plastika">Plastika</option>
-                    <option value="Papir">Papir</option>
-                    <option value="Staklo">Staklo</option>
-                    <option value="Biootpad">Biootpad</option>
-                    <option value="Ostalo">Ostalo</option>
+                    <option value="Plastika">Plastic</option>
+                    <option value="Papir">Paper</option>
+                    <option value="Staklo">Glass</option>
+                    <option value="Biootpad">Biowaste</option>
+                    <option value="Ostalo">Other</option>
                 </select>
-                <label for="napunjenost">Napunjenost (%):</label>
+                <label for="napunjenost">Fill level (%):</label>
                 <input type="number" id="napunjenost" name="napunjenost" step="0.01" min="0" required><br>
-                <label for="temperatura">Temperatura (°C):</label>
+                <label for="temperatura">Temperature (°C):</label>
                 <input type="number" id="temperatura" name="temperatura" step="0.01" required><br>
-                <label for="plamen">Plamen:</label>
+                <label for="plamen">Flame:</label>
                 <select id="plamen" name="plamen" required>
-                    <option value="none" selected disabled>Odaberite...</option>
-                    <option value="true">Da</option>
-                    <option value="false">Ne</option>
+                    <option value="none" selected disabled>Select...</option>
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
                 </select><br>
-                <label for="polozaj">Položaj spremnika:</label>
+                <label for="polozaj">Bin position:</label>
                 <select id="polozaj" name="polozaj" required>
-                    <option value="none" selected disabled>Odaberite...</option>
-                    <option value="false">Ispravan</option>
-                    <option value="true">Prevrnut</option>
+                    <option value="none" selected disabled>Select...</option>
+                    <option value="false">Upright</option>
+                    <option value="true">Tipped over</option>
                 </select><br>
-                <label for="baterija">Baterija (%):</label>
+                <label for="baterija">Battery (%):</label>
                 <input type="number" id="baterija" name="baterija" step="0.01" min="0" required><br>
-                <label for="dim">Dim:</label>
+                <label for="dim">Smoke:</label>
                 <select id="dim" name="dim" required>
-                    <option value="none" selected disabled>Odaberite...</option>
-                    <option value="true">Da</option>
-                    <option value="false">Ne</option>
+                    <option value="none" selected disabled>Select...</option>
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
                 </select><br>
-                <button type="submit" id="spremi-btn">Spremi</button>
-                <button type="button" id="odustani">Odustani</button>
+                <button type="submit" id="spremi-btn">Save</button>
+                <button type="button" id="odustani">Cancel</button>
             </form>
         </div>
     </div>
