@@ -1,46 +1,27 @@
-# rebuild
+FROM node:20
 
-# syntax = docker/dockerfile:1
-
-# Adjust NODE_VERSION as desired
-ARG NODE_VERSION=20.11.0
-FROM node:${NODE_VERSION}-slim as base
-
-LABEL fly_launch_runtime="Node.js"
-
-# Node.js app lives here
+# Where the app lives inside the container
 WORKDIR /app
 
-# Set production environment
-ENV NODE_ENV="production"
+# Production environment
+ENV NODE_ENV=production
 
+# 1. Copy package files
+COPY package.json package-lock.json ./
 
-# Throw-away build stage to reduce size of final image
-FROM base as build
+# 2. Install dependencies
+RUN npm install --omit=dev
 
-# Install packages needed to build node modules
-RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential node-gyp pkg-config python-is-python3
-
-# Install node modules
-COPY package-lock.json package.json ./
-RUN npm ci
-
-# Copy application code
+# 3. Copy the rest of the source code
 COPY . .
 
-
-# Final stage for app image
-FROM base
-
-# Copy built application
-COPY --from=build /app /app
-
-# Setup sqlite3 on a separate volume
+# Use a separate volume for SQLite data
 RUN mkdir -p /data
-VOLUME /data
-
-# Start the server by default, this can be overwritten at runtime
-EXPOSE 3000
+VOLUME ["/data"]
 ENV DATABASE_URL="file:///data/sqlite.db"
-CMD [ "npm", "run", "start" ]
+
+# Port the app listens on
+EXPOSE 3000
+
+# Start the application (expects "start": "node server.js" in package.json)
+CMD ["npm", "run", "start"]
