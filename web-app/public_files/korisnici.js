@@ -248,6 +248,12 @@ function displayUsers(usersToDisplay) {
                 <button class="delete-btn" onclick="deleteUser(${user.id}, this)">Delete</button>
             </div>
         `;
+
+        const addressCell = userDiv.querySelector('.col-adresa');
+        if (addressCell) {
+            addressCell.title = `${user.ulica} ${user.broj}`;
+        }
+        
         usersList.appendChild(userDiv);
     });
 }
