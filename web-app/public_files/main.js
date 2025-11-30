@@ -162,7 +162,7 @@ export function filterAndSortBins(bins, searchTerm) {
       binsToDisplay = binsToDisplay.filter(bin => {
           const matchesNaziv = bin.naziv.toLowerCase().includes(searchTerm);
           const matchesNapunjenost = bin.ocitanja && bin.ocitanja.some(ocitanje => ocitanje.napunjenost.toString().includes(searchTerm));
-          const matchesPolozaj = bin.ocitanja && bin.ocitanja.some(ocitanje => ocitanje.polozaj ? 'tipped over'.includes(searchTerm) : 'upright'.includes(searchTerm));
+          const matchesPolozaj = bin.ocitanja && bin.ocitanja.some(ocitanje => ocitanje.polozaj ? 'overturned'.includes(searchTerm) : 'upright'.includes(searchTerm));
           const matchesTemperatura = bin.ocitanja && bin.ocitanja.some(ocitanje => ocitanje.temperatura.toString().includes(searchTerm));
           const matchesPlamen = bin.ocitanja && bin.ocitanja.some(ocitanje => ocitanje.plamen ? 'yes'.includes(searchTerm) : 'no'.includes(searchTerm));
           const matchesDim = bin.ocitanja && bin.ocitanja.some(ocitanje => ocitanje.dim ? 'yes'.includes(searchTerm) : 'no'.includes(searchTerm));
@@ -601,14 +601,22 @@ async function createBinDiv(bin) {
     binDiv.innerHTML = `
     <span class="col-naziv bold">${bin.naziv}</span>
     <span class="col-napunjenost ${napunjenostClass}">${latestReading.napunjenost !== undefined ? latestReading.napunjenost : 'N/A'}%</span>
-    <span class="col-polozaj ${latestReading.polozaj ? 'highlight' : ''}">${latestReading.polozaj ? 'Tipped over' : 'Upright'}</span>
+    <span class="col-polozaj ${latestReading.polozaj ? 'highlight' : ''}">${latestReading.polozaj ? 'Overturned' : 'Upright'}</span>
     <span class="col-temperatura ${latestReading.temperatura > 80 ? 'highlight' : ''}">${latestReading.temperatura || 'N/A'}°C</span>
     <span class="col-plamen ${latestReading.plamen ? 'highlight blink-row' : ''}">${latestReading.plamen ? 'Yes' : 'No'}</span>
     <span class="col-dim ${latestReading.dim ? 'highlight' : ''}">${latestReading.dim ? 'Yes' : 'No'}</span>
     <span class="col-baterija ${latestReading.baterija < 10 ? 'highlight' : ''}">${latestReading.baterija || 'N/A'}%</span>
     <span class="col-adresa" data-full-address="${bin.address || 'N/A'}">${bin.address || 'N/A'}</span>
     <span class="col-podrucje">${bin.podrucje || 'N/A'}</span>
-    <span class="col-vrsta">${bin.vrsta_otpad || 'N/A'}</span>
+    <span class="col-vrsta">${
+      bin.vrsta_otpad === 'Plastika' ? 'Plastic' :
+      bin.vrsta_otpad === 'Papir'    ? 'Paper'   :
+      bin.vrsta_otpad === 'Staklo'   ? 'Glass'   :
+      bin.vrsta_otpad === 'Biootpad' ? 'Bio waste' :
+      bin.vrsta_otpad === 'Ostalo'   ? 'Other'   :
+      (bin.vrsta_otpad || 'N/A')
+    }</span>
+
     <div class="col-akcije actions">
         <button class="update-btn" onclick='openUpdateForm(${bin.id})'>Edit</button>
         <button class="delete-btn" onclick="deleteContainer(${bin.id}, this)">Delete</button>
