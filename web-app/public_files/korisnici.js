@@ -180,7 +180,7 @@ function addOdjavaListener() {
         newCheckbox.addEventListener('change', function(event) {
             if (event.target.checked) {
                 // Prikaz poruke samo ako je korisnik označio odjavu
-                const confirmation = window.confirm('Jeste li sigurni da želite odjaviti korisnika? Dodijeljeni spremnici će se ukloniti.');
+                const confirmation = window.confirm('Are you sure you want to deactivate this user? The assigned bins will be removed.');
                 if (!confirmation) {
                     event.target.checked = false; // Poništavanje promjene ako korisnik odustane
                 } else {
@@ -190,7 +190,7 @@ function addOdjavaListener() {
                 }
             } else {
                 // Prikazivanje poruke samo ako korisnik poništava odjavu (želi ponovno prijaviti korisnika)
-                const confirmation = window.confirm('Želite li ponovno prijaviti korisnika?');
+                const confirmation = window.confirm('Do you want to reactivate this user?');
                 if (!confirmation) {
                     event.target.checked = true; // Poništavanje promjene ako korisnik odustane
                 }
@@ -244,8 +244,8 @@ function displayUsers(usersToDisplay) {
             <div class="korisnik-stupac col-spremnici">${spremniciNazivi}</div>
             <div class="korisnik-stupac col-podrucje">${podrucjaNazivi}</div>
             <div class="korisnik-stupac col-akcije">
-                <button class="update-btn" onclick='openUpdateForm(${JSON.stringify(user)})'>Uredi</button>
-                <button class="delete-btn" onclick="deleteUser(${user.id}, this)">Obriši</button>
+                <button class="update-btn" onclick='openUpdateForm(${JSON.stringify(user)})'>Edit</button>
+                <button class="delete-btn" onclick="deleteUser(${user.id}, this)">Delete</button>
             </div>
         `;
         usersList.appendChild(userDiv);
@@ -492,7 +492,7 @@ function createUserDiv(user) {
 async function deleteUser(id, deleteBtn) {
     try {
         // Potvrda prije brisanja
-        const confirmation = window.confirm('Jeste li sigurni da želite obrisati ovog korisnika?');
+        const confirmation = window.confirm('Are you sure you want to remove this user?');
         if (!confirmation) {
             // Ako korisnik klikne "Odustani", prekida se brisanje
             return;
