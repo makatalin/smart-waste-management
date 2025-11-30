@@ -70,10 +70,10 @@ export const createMarker = (bin, icon) => {
         .bindPopup(`
             <b>${bin.naziv}</b><br>
             Napunjenost: ${latestReading.napunjenost || 'N/A'}%<br>
-            Položaj: ${latestReading.polozaj ? 'Prevrnut' : 'Ispravan'}<br>
+            Položaj: ${latestReading.polozaj ? 'Overturned' : 'Upright'}<br>
             Temperatura: ${latestReading.temperatura || 'N/A'}°C<br>
-            Plamen: ${latestReading.plamen ? 'Da' : 'Ne'}<br>
-            Dim: ${latestReading.dim ? 'Da' : 'Ne'}
+            Plamen: ${latestReading.plamen ? 'Yes' : 'No'}<br>
+            Dim: ${latestReading.dim ? 'Yes' : 'No'}
         `);
 }
 
@@ -332,10 +332,10 @@ export const getOptimizedRoute = async (searchTerm) => {
 export const toggleRouteOptimization = async () => {
     if (isOptimizingRoute) {
         stopCheckingForTraffic();
-        document.getElementById('show-route-btn').innerText = "Prikaži optimiziranu rutu";
+        document.getElementById('show-route-btn').innerText = "Show optimized route";
         isOptimizingRoute = false;
     } else {
-        document.getElementById('show-route-btn').innerText = "Zaustavi optimizaciju rute";
+        document.getElementById('show-route-btn').innerText = "Stop route optimization";
 
         // Ako nema pretraživanja, svi spremnici su dostupni
         let filteredBins;
@@ -372,7 +372,7 @@ export const toggleRouteOptimization = async () => {
         } else {
             console.error('Nema spremnika za optimiziranu rutu.');
             alert('Nema spremnika koji imaju napunjenost veću od 75%.');
-            document.getElementById('show-route-btn').innerText = "Prikaži optimiziranu rutu";
+            document.getElementById('show-route-btn').innerText = "Show optimized route";
             isOptimizingRoute = false;
             stopCheckingForTraffic();
         }
