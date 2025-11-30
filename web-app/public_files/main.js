@@ -620,11 +620,7 @@ document.getElementById('spremnici-lista').appendChild(binDiv);
 // Provjera širine teksta u elementu s klasom "col-adresa"
 const locationSpan = binDiv.querySelector('.col-adresa');
 if (locationSpan) {
-    if (locationSpan.offsetWidth < locationSpan.scrollWidth) {
-        locationSpan.setAttribute('data-full-address', locationSpan.textContent.trim());
-    } else {
-        locationSpan.removeAttribute('data-full-address');
-    }
+    locationSpan.setAttribute('data-full-address', locationSpan.textContent.trim());
 }
 
   return binDiv;
@@ -811,6 +807,7 @@ async function addBinToList(bin) {
       const locationSpan = binDiv.querySelector('.col-adresa');
       if (locationSpan) {
           locationSpan.textContent = address;
+          locationSpan.setAttribute('data-full-address', address.trim());
       }
       
       // Provjera širine nakon što je element dodan u DOM
