@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
         closeText: 'Close',
         prevText: '&#x3C;',
         nextText: '&#x3E;',
-        currentText: 'Danas',
+        currentText: 'Today',
         monthNames: ['January', 'February', 'March', 'April', 'May', 'June',
             'July', 'August', 'September', 'October', 'November', 'December'
         ],
