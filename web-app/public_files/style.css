@@ -82,16 +82,16 @@ input.error {
     box-sizing: border-box;
 }
 
-.col-naziv { flex-basis: 12%; min-width: 50px; }
-.col-napunjenost { flex-basis: 7%; min-width: 30px; }
-.col-polozaj { flex-basis: 8%; min-width: 50px; }
+.col-naziv { flex-basis: 16%; min-width: 50px; }
+.col-napunjenost { flex-basis: 9%; min-width: 30px; }
+.col-polozaj { flex-basis: 16%; min-width: 50px; }
 .col-temperatura { flex-basis: 8%; min-width: 60px; }
 .col-plamen { flex-basis: 6%; min-width: 50px; }
 .col-dim { flex-basis:6%; min-width: 50px; }
-.col-baterija { flex-basis: 7%; min-width: 60px; }
-.col-adresa { flex-basis: 27%; min-width: 100px; }
-.col-podrucje { flex-basis: 9%; min-width: 50px; }
-.col-vrsta { flex-basis: 11%; min-width: 50px; }
+.col-baterija { flex-basis: 6%; min-width: 60px; }
+.col-adresa { flex-basis: 20%; min-width: 100px; }
+.col-podrucje { flex-basis: 10%; min-width: 50px; }
+.col-vrsta { flex-basis: 15%; min-width: 50px; }
 .col-akcije { flex-basis: 5%; min-width: 100px; }
 
 /* Postavke za kolone */
@@ -102,7 +102,9 @@ input.error {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-   
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .col-naziv {
@@ -124,6 +126,7 @@ input.error {
     padding: 0 5px; /* Prostor unutar svakog stupca redaka */
     border-bottom: 1px solid #eeeeee;
     box-sizing: border-box;
+    gap: 1px;
 }
 
 .spremnik-item span {
@@ -144,7 +147,8 @@ input.error {
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
-    max-width: 100%;
+    max-width: calc(100% - 6px);
+    margin-right: 6px;
 }
 
 .col-adresa::after {
