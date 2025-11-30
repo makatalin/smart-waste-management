@@ -628,10 +628,12 @@ document.getElementById('spremnici-lista').appendChild(binDiv);
 // Provjera širine teksta u elementu s klasom "col-adresa"
 const locationSpan = binDiv.querySelector('.col-adresa');
 if (locationSpan) {
-    locationSpan.setAttribute('data-full-address', locationSpan.textContent.trim());
+  const fullAddress = locationSpan.textContent.trim();
+  locationSpan.setAttribute('data-full-address', fullAddress);
+  locationSpan.setAttribute('title', fullAddress);
 }
 
-  return binDiv;
+return binDiv;
 }
 
 // Funkcija za rukovanje slanjem forme
@@ -815,9 +817,11 @@ async function addBinToList(bin) {
       const locationSpan = binDiv.querySelector('.col-adresa');
       if (locationSpan) {
           locationSpan.textContent = address;
-          locationSpan.setAttribute('data-full-address', address.trim());
+          const fullAddress = address.trim();
+          locationSpan.setAttribute('data-full-address', fullAddress);
+          locationSpan.setAttribute('title', fullAddress);
       }
-      
+
       // Provjera širine nakon što je element dodan u DOM
       container.appendChild(binDiv);
       console.log('Spremnik uspješno dodan na listu.');
