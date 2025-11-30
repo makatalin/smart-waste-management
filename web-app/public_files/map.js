@@ -69,8 +69,8 @@ export const createMarker = (bin, icon) => {
     return L.marker([bin.lat, bin.lng], { icon: icon })
         .bindPopup(`
             <b>${bin.naziv}</b><br>
-            Napunjenost: ${latestReading.napunjenost || 'N/A'}%<br>
-            Položaj: ${latestReading.polozaj ? 'Overturned' : 'Upright'}<br>
+            Napunjenost: ${latestReading.napunjenost || '0'}%<br>
+            Položaj: ${latestReading.polozaj ? 'Tipped' : 'Upright'}<br>
             Temperatura: ${latestReading.temperatura || 'N/A'}°C<br>
             Plamen: ${latestReading.plamen ? 'Yes' : 'No'}<br>
             Dim: ${latestReading.dim ? 'Yes' : 'No'}
@@ -371,7 +371,7 @@ export const toggleRouteOptimization = async () => {
             startCheckingForTraffic();
         } else {
             console.error('Nema spremnika za optimiziranu rutu.');
-            alert('Nema spremnika koji imaju napunjenost veću od 75%.');
+            alert('There are no bins with a fill level greater than 75%.');
             document.getElementById('show-route-btn').innerText = "Show optimized route";
             isOptimizingRoute = false;
             stopCheckingForTraffic();
