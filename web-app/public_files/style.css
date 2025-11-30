@@ -4,7 +4,7 @@ body {
 }
 
 #navbar {
-    background-color: #333;
+    background-color: #34a848;
     overflow: hidden;
 }
 
@@ -13,7 +13,7 @@ body {
     display: block;
     color: white;
     text-align: center;
-    padding: 14px 20px;
+    padding: 12px 20px;
     text-decoration: none;
 }
 
@@ -107,8 +107,13 @@ input.error {
     text-overflow: ellipsis;
 }
 
+.spremnik-naslov .col-podrucje,
+.spremnik-naslov .col-vrsta {
+    padding-left:4px;
+}
+
 .col-naziv {
-    margin-left: 5px;
+    margin-left: 4px;
 }
 
 .spremnik-naslov {
@@ -127,6 +132,10 @@ input.error {
     border-bottom: 1px solid #eeeeee;
     box-sizing: border-box;
     gap: 1px;
+}
+
+.spremnik-item:not(.spremnik-naslov) .col-naziv {
+    padding-left: 4px;
 }
 
 .spremnik-item:not(.spremnik-naslov) .col-napunjenost {
