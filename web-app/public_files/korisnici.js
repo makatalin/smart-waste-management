@@ -237,7 +237,7 @@ function displayUsers(usersToDisplay) {
             <div class="korisnik-stupac col-ime bold">${user.ime} ${user.prezime}</div>
             <div class="korisnik-stupac col-email">${user.email}</div>
             <div class="korisnik-stupac col-telefon">${user.telefon}</div>
-            <div class="korisnik-stupac col-adresa">${user.ulica} ${user.broj}</div>
+            <div class="korisnik-stupac col-adresa" title="${user.ulica} ${user.broj}">${user.ulica} ${user.broj}</div>
             <div class="korisnik-stupac col-grad">${user.grad}</div>
             <div class="korisnik-stupac col-registracija">${formatDateHR(user.datum_registracije)}</div>
             <div class="korisnik-stupac col-odjava">${user.datum_odjave ? formatDateHR(user.datum_odjave) : ''}</div>
@@ -248,11 +248,6 @@ function displayUsers(usersToDisplay) {
                 <button class="delete-btn" onclick="deleteUser(${user.id}, this)">Delete</button>
             </div>
         `;
-
-        const addressCell = userDiv.querySelector('.col-adresa');
-        if (addressCell) {
-            addressCell.title = `${user.ulica} ${user.broj}`;
-        }
         
         usersList.appendChild(userDiv);
     });
