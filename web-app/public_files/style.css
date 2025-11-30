@@ -129,6 +129,10 @@ input.error {
     gap: 1px;
 }
 
+.spremnik-item:not(.spremnik-naslov) .col-napunjenost {
+    padding-left: 3px;
+}
+
 .spremnik-item span {
     height: 100%;
 }
