@@ -30,30 +30,30 @@ document.addEventListener('DOMContentLoaded', () => {
 // ****************************
 
     // Regionalne postavke kalendara
-    $.datepicker.setDefaults($.datepicker.regional['hr']);
+    $.datepicker.setDefaults($.datepicker.regional['en']);
 
     $.datepicker.regional['hr'] = {
-        closeText: 'Zatvori',
+        closeText: 'Close',
         prevText: '&#x3C;',
         nextText: '&#x3E;',
         currentText: 'Danas',
-        monthNames: ['Siječanj', 'Veljača', 'Ožujak', 'Travanj', 'Svibanj', 'Lipanj',
-            'Srpanj', 'Kolovoz', 'Rujan', 'Listopad', 'Studeni', 'Prosinac'
+        monthNames: ['January', 'February', 'March', 'April', 'May', 'June',
+            'July', 'August', 'September', 'October', 'November', 'December'
         ],
-        monthNamesShort: ['Sij', 'Velj', 'Ožu', 'Tra', 'Svi', 'Lip',
-            'Srp', 'Kol', 'Ruj', 'Lis', 'Stu', 'Pro'
+        monthNamesShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+            'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
         ],
-        dayNames: ['Nedjelja', 'Ponedjeljak', 'Utorak', 'Srijeda', 'Četvrtak', 'Petak', 'Subota'],
-        dayNamesShort: ['Ned', 'Pon', 'Uto', 'Sri', 'Čet', 'Pet', 'Sub'],
-        dayNamesMin: ['Ne', 'Po', 'Ut', 'Sr', 'Če', 'Pe', 'Su'],
-        weekHeader: 'Tje',
+        dayNames: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+        dayNamesShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+        dayNamesMin: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+        weekHeader: 'Week',
         dateFormat: 'yy-mm-dd',
         firstDay: 1,
         isRTL: false,
         showMonthAfterYear: false,
         yearSuffix: ''
     };
-    $.datepicker.setDefaults($.datepicker.regional['hr']);
+    $.datepicker.setDefaults($.datepicker.regional['en']);
 
     // Dohvaćanje spremljenog datuma
     const storedStartDate = localStorage.getItem('startDate');
@@ -103,7 +103,6 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(response => response.json())
             .then(data => {
                 if (data) {
-                    //console.log('Dohvaćeni podaci za izvještaje:', data);
                     // Priprema podataka za displayChart funkciju
                     const wasteAmountData = {
                         ...data.wasteAmount,
@@ -163,17 +162,17 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
 
                     // Prikaz grafova s podacima
-                    displayWasteAmountChart('wasteAmountChart', 'Količina otpada', wasteAmountData, 'line');
-                    displayHeatmapChart('emptyingFrequencyChart', 'Učestalost pražnjenja', emptyingFrequencyData, 'heatmap');
-                    displayAverageFillLevelChart('averageFillLevelChart', 'Prosječna napunjenost', averageFillLevelData, 'bar');
-                    displayOverflowCountChart('overflowCountChart', 'Napunjenost veća od 75%', overflowCountData, 'bar');
+                    displayWasteAmountChart('wasteAmountChart', 'Waste volume', wasteAmountData, 'line');
+                    displayHeatmapChart('emptyingFrequencyChart', 'Emptying frequency', emptyingFrequencyData, 'heatmap');
+                    displayAverageFillLevelChart('averageFillLevelChart', 'Average fill level', averageFillLevelData, 'bar');
+                    displayOverflowCountChart('overflowCountChart', 'Fill level > 75%', overflowCountData, 'bar');
                     displayHorizontalBarChart('averageFillLevelByAreaChart', areaUsageData, 'groupedBar');
                     displayWasteVolumePieChart('wasteVolumePieChart', wasteVolumeByTypeData, 'pie');
                 } else {
-                    console.error('Nema podataka');
+                    console.error('No data');
                 }
             })
-            .catch(error => console.error('Greška u dohvaćanju podataka: ', error));
+            .catch(error => console.error('Error fetching data: ', error));
     }
     
     // Učitavanje podataka za zadnjih tjedan dana prilikom prvog učitavanja stranice
@@ -203,7 +202,7 @@ function generateDateRange(startDate, endDate) {
 // Graf "Ukupna količina otpada u m3"
 function displayWasteAmountChart(canvasId, label, data) {
     if (!data || !data.labels || data.labels.length === 0 || !data.values || data.values.length === 0) {
-        console.warn(`Nema podataka za grafikon ${label}.`);
+        console.warn(`No data for chart ${label}.`);
         return;
     }
 
@@ -233,7 +232,7 @@ function displayWasteAmountChart(canvasId, label, data) {
             plugins: {
                 title: {
                     display: true,
-                    text: 'Ukupna količina otpada u m³',
+                    text: 'Total waste volume (m³)',
                     font: {
                         size: 18,
                         weight: 'normal'
@@ -296,7 +295,7 @@ function displayWasteAmountChart(canvasId, label, data) {
 // Graf "Razvrstane količine otpada"
 function displayWasteVolumePieChart(canvasId, data) {
     if (!data || !data.labels || data.labels.length === 0 || !data.values || data.values.length === 0) {
-        console.warn(`Nema podataka za grafikon ${label}.`);
+        console.warn(`No data for chart ${label}.`);
         return;
     }
 
@@ -323,7 +322,7 @@ function displayWasteVolumePieChart(canvasId, data) {
             plugins: {
                 title: {
                     display: true,
-                    text: 'Razvrstane količine otpada',
+                    text: 'Separated waste volumes',
                     font: {
                         size: 18,
                         weight: 'normal'
@@ -358,7 +357,7 @@ function displayWasteVolumePieChart(canvasId, data) {
 // Graf "Prosječna napunjenost spremnika"
 function displayAverageFillLevelChart(canvasId, label, data) {
     if (!data || !data.labels || data.labels.length === 0 || !data.values || data.values.length === 0) {
-        console.warn(`Nema podataka za grafikon ${label}.`);
+        console.warn(`No data for chart ${label}.`);
         return;
     }
     
@@ -391,7 +390,7 @@ function displayAverageFillLevelChart(canvasId, label, data) {
             plugins: {
                 title: {
                     display: true,
-                    text: 'Prosječna napunjenost spremnika',
+                    text: 'Average bin fill level',
                     font: {
                         size: 18,
                         weight: 'normal'
@@ -438,7 +437,7 @@ function displayAverageFillLevelChart(canvasId, label, data) {
 // Graf "Prosječna napunjenost spremnika prema području"
 function displayHorizontalBarChart(canvasId, data) {
     if (!data || !data.labels || data.labels.length === 0 || !data.averageFillValues || data.averageFillValues.length === 0) {
-        console.warn(`Nema podataka za grafikon ${label}.`);
+        console.warn(`No data for chart ${label}.`);
         return;
     }
 
@@ -446,21 +445,21 @@ function displayHorizontalBarChart(canvasId, data) {
 
     const formattedData = [
         {
-            label: 'Prosječna napunjenost %',
+            label: 'Average fill level (%)',
             data: data.averageFillValues,
             backgroundColor: 'rgba(75, 192, 192, 0.5)',
             borderColor: 'rgba(75, 192, 192, 1)',
             borderWidth: 1,
         },
         {
-            label: 'Učestalost pražnjenja',
+            label: 'Emptying frequency',
             data: data.emptyingCountValues,
             backgroundColor: 'rgba(153, 102, 255, 0.5)',
             borderColor: 'rgba(153, 102, 255, 1)',
             borderWidth: 1,
         },
         {
-            label: 'Broj spremnika',
+            label: 'Number of bins',
             data: data.containerCountValues,
             backgroundColor: 'rgba(255, 159, 64, 0.5)',
             borderColor: 'rgba(255, 159, 64, 1)',
@@ -480,7 +479,7 @@ function displayHorizontalBarChart(canvasId, data) {
             plugins: {
                 title: {
                     display: true,
-                    text: 'Prosječna napunjenost prema području',
+                    text: 'Average fill level by area',
                     font: {
                         size: 18,
                         weight: 'normal'
@@ -499,12 +498,12 @@ function displayHorizontalBarChart(canvasId, data) {
                             const label = context.dataset.label || '';
                             const value = context.raw;
                 
-                            if (label === 'Prosječna napunjenost %') {
+                            if (label === 'Average fill level (%)') {
                                 return `${parseFloat(value).toFixed(2)}%`;
-                            } else if (label === 'Učestalost pražnjenja') {
-                                return `${value} puta`;
-                            } else if (label === 'Broj spremnika') {
-                                return `${value} spremnika`;
+                            } else if (label === 'Emptying frequenc') {
+                                return `${value} time(s)`;
+                            } else if (label === 'Number of bins') {
+                                return `${value} bin(s)`;
                             } else {
                                 return `${label}: ${value}`;
                             }
@@ -543,7 +542,7 @@ function displayHorizontalBarChart(canvasId, data) {
 // Graf "Puni spremnici"
 function displayOverflowCountChart(canvasId, label, data) {
     if (!data || !data.labels || data.labels.length === 0 || !data.values || data.values.length === 0) {
-        console.warn(`Nema podataka za grafikon ${label}.`);
+        console.warn(`No data for chart ${label}.`);
         return;
     }
 
@@ -576,7 +575,7 @@ function displayOverflowCountChart(canvasId, label, data) {
             plugins: {
                 title: {
                     display: true,
-                    text: 'Puni spremnici',
+                    text: 'Full bins',
                     font: {
                         size: 18,
                         weight: 'normal'
@@ -626,7 +625,7 @@ function displayOverflowCountChart(canvasId, label, data) {
 // Graf "Učestalost pražnjenja spremnika"
 function displayHeatmapChart(canvasId, label, data) {
     if (!data || !data.labels || data.labels.length === 0 || !data.values || data.values.length === 0) {
-        console.warn(`Nema podataka za grafikon ${label}.`);
+        console.warn(`No data for chart ${label}.`);
         return;
     }
 
@@ -650,7 +649,7 @@ function displayHeatmapChart(canvasId, label, data) {
 
     const heatmapData = {
         datasets: [{
-            label: 'Pražnjenje Spremnika',
+            label: 'Bin emptying',
             data: formattedData,
             backgroundColor: function(context) {
                 const value = context.dataset.data[context.dataIndex].v;
@@ -689,7 +688,7 @@ function displayHeatmapChart(canvasId, label, data) {
         plugins: {
             title: {
                 display: true,
-                text: 'Učestalost pražnjenja spremnika',
+                text: 'Bin emptying frequency',
                 font: {
                     size: 18, 
                     weight: 'normal'
