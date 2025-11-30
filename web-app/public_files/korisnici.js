@@ -211,7 +211,7 @@ function displayUsers(usersToDisplay) {
         <div class="korisnik-stupac col-ime">Name</div>
         <div class="korisnik-stupac col-email">Email</div>
         <div class="korisnik-stupac col-telefon">Phone</div>
-        <div class="korisnik-stupac col-adresa">Adress</div>
+        <div class="korisnik-stupac col-adresa">Address</div>
         <div class="korisnik-stupac col-grad">City</div>
         <div class="korisnik-stupac col-registracija">Registered</div>
         <div class="korisnik-stupac col-odjava">Deactivated</div>
