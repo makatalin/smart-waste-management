@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // FORMATIRANJE HR DATUMA
 function formatDateHR(dateString) {
     const date = new Date(dateString);
-    return date.toLocaleDateString('hr-HR');
+    return date.toLocaleDateString('en-EN');
 }
 
 // UČITAVANJE KORISNIKA IZ BAZE
