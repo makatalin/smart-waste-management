@@ -183,6 +183,12 @@ button.delete-btn:hover {
 .col-podrucje { flex-basis: 7%; }
 .col-akcije { flex-basis: 15%; }
 
+.col-adresa {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .update-btn, .delete-btn {
     margin: 5px;
     padding: 5px 10px;
