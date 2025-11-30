@@ -69,11 +69,11 @@ export const createMarker = (bin, icon) => {
     return L.marker([bin.lat, bin.lng], { icon: icon })
         .bindPopup(`
             <b>${bin.naziv}</b><br>
-            Napunjenost: ${latestReading.napunjenost || '0'}%<br>
-            Položaj: ${latestReading.polozaj ? 'Tipped' : 'Upright'}<br>
-            Temperatura: ${latestReading.temperatura || 'N/A'}°C<br>
-            Plamen: ${latestReading.plamen ? 'Yes' : 'No'}<br>
-            Dim: ${latestReading.dim ? 'Yes' : 'No'}
+            Fill: ${latestReading.napunjenost || '0'}%<br>
+            Position: ${latestReading.polozaj ? 'Tipped' : 'Upright'}<br>
+            Temperature: ${latestReading.temperatura || 'N/A'}°C<br>
+            Fire: ${latestReading.plamen ? 'Yes' : 'No'}<br>
+            Smoke: ${latestReading.dim ? 'Yes' : 'No'}
         `);
 }
 
