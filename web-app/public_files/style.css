@@ -26,9 +26,9 @@ body {
     color: white;
 }
 
-.bold {
+/*.bold {
     font-weight: bold;
-} 
+}*/
 
 .form-container {
     position: fixed;
@@ -123,6 +123,11 @@ input.error {
     background-color: #f1f1f1 !important;
     font-weight: bold !important;
     padding: 0 10px !important;
+}
+
+.spremnik-naslov.spremnik-item {
+    height: clamp(24px, 3vh, 32px);
+    font-size: clamp(11px, 1vw, 14px) !important;
 }
 
 .spremnik-item {
