@@ -92,7 +92,7 @@ input.error {
 .col-adresa { flex-basis: 20%; min-width: 100px; }
 .col-podrucje { flex-basis: 10%; min-width: 50px; }
 .col-vrsta { flex-basis: 15%; min-width: 50px; }
-.col-akcije { flex-basis: 5%; min-width: 100px; }
+.col-akcije { flex-basis: 5%; min-width: 85px; }
 
 /* Postavke za kolone */
 .col-naziv, .col-napunjenost, .col-polozaj, .col-temperatura, .col-plamen, .col-dim, .col-baterija, .col-adresa, .col-podrucje, .col-vrsta, .col-akcije {
