@@ -1,7 +1,7 @@
 # Smart Waste Management Using the Internet of Things (IoT)
 
 **Live Demo:** [Smart Waste Management Web Application](https://web-app-crimson-frog-9441.fly.dev)  
-*Note: The hosted demo currently runs with mock data (no live hardware connected). The demo database contains sample data for September 2024; to see meaningful charts on the **Reports** page, please select a date range between **September 9, 2024 and September 30, 2024**.*
+*Note: The hosted demo currently runs with mock data (no live hardware connected).*
 
 ![Smart Waste Management Dashboard](gallery/4_Web_app_dashboard.png)
 
