@@ -618,7 +618,7 @@ async function createBinDiv(bin) {
       bin.vrsta_otpad === 'Plastika' ? 'Plastic' :
       bin.vrsta_otpad === 'Papir'    ? 'Paper'   :
       bin.vrsta_otpad === 'Staklo'   ? 'Glass'   :
-      bin.vrsta_otpad === 'Biootpad' ? 'Bio waste' :
+      bin.vrsta_otpad === 'Biootpad' ? 'Bio' :
       bin.vrsta_otpad === 'Ostalo'   ? 'Other'   :
       (bin.vrsta_otpad || 'N/A')
     }</span>
