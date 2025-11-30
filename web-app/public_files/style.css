@@ -126,8 +126,8 @@ input.error {
 }
 
 .spremnik-naslov.spremnik-item {
-    height: clamp(24px, 3vh, 32px);
-    font-size: clamp(11px, 0.9vw, 13px) !important;
+    height: clamp(24px, 3.5vh, 32px);
+    font-size: clamp(11px, 1vw, 13px) !important;
 }
 
 .spremnik-item {
