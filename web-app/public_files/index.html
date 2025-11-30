@@ -33,7 +33,7 @@
                 <div class="summary-box">
                     <h3>Bins</h3>
                     <span id="total-bins-count">Total: 0</span>
-                    <span id="overturned-bins-count">Tipped over: 0</span>
+                    <span id="overturned-bins-count">Tipped: 0</span>
                     <span id="high-temp-count">Above 80°C: 0</span>
                     <span id="fire-detected">Flame: 0</span>
                     <span id="smoke-detected">Smoke: 0</span>
@@ -43,17 +43,17 @@
                 <div class="summary-box red">
                     <h3>75%+</h3>
                     <span id="bins-75-count">Total: 0</span>
-                    <span id="avg-fill-75">Average fill level: 0%</span>
+                    <span id="avg-fill-75">Avg fill: 0%</span>
                 </div>
                 <div class="summary-box orange">
                     <h3>51%-74%</h3>
                     <span id="bins-51-74-count">Total: 0</span>
-                    <span id="avg-fill-51-74">Average fill level: 0%</span>
+                    <span id="avg-fill-51-74">Avg fill: 0%</span>
                 </div>
                 <div class="summary-box green">
                     <h3>0%-50%</h3>
                     <span id="bins-0-50-count">Total: 0</span>
-                    <span id="avg-fill-0-50">Average fill level: 0%</span>
+                    <span id="avg-fill-0-50">Avg fill: 0%</span>
                 </div>
             </div>
         </div>
@@ -77,12 +77,12 @@
                 <input type="text" id="volumen" required>
                 <label for="podrucje">Area:</label>
                 <input type="text" id="podrucje" name="podrucje">
-                <label for="vrsta">Waste type:</label>
+                <label for="vrsta">Waste:</label>
                 <select id="vrsta" name="vrsta_otpad">
                     <option value="Plastika">Plastic</option>
                     <option value="Papir">Paper</option>
                     <option value="Staklo">Glass</option>
-                    <option value="Biootpad">Biowaste</option>
+                    <option value="Biootpad">Bio</option>
                     <option value="Ostalo">Other</option>
                 </select>
                 <label for="napunjenost">Fill level (%):</label>
@@ -99,7 +99,7 @@
                 <select id="polozaj" name="polozaj" required>
                     <option value="none" selected disabled>Select...</option>
                     <option value="false">Upright</option>
-                    <option value="true">Tipped over</option>
+                    <option value="true">Tipped</option>
                 </select><br>
                 <label for="baterija">Battery (%):</label>
                 <input type="number" id="baterija" name="baterija" step="0.01" min="0" required><br>
