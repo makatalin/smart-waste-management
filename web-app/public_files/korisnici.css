@@ -145,7 +145,6 @@ button.delete-btn:hover {
     align-items: center;
     justify-content: flex-start;
     border-bottom: 1px solid #ddd;
-    padding: 5px 0;
 }
 
 .korisnik-zaglavlje {
@@ -154,6 +153,7 @@ button.delete-btn:hover {
     top: 0;
     background-color: #f1f1f1;
     font-weight: bold;
+    padding: 5px 0;
 }
 
 .korisnik-podaci {
