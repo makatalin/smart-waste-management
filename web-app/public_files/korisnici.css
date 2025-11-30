@@ -1,6 +1,7 @@
 body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
+    font-size: clamp(12px, 1.2vw, 16px);
 }
 
 .bold {
@@ -8,7 +9,7 @@ body {
 }
 
 #navbar {
-    background-color: #333;
+    background-color: #34a848;
     overflow: hidden;
 }
 
@@ -17,7 +18,7 @@ body {
     display: block;
     color: white;
     text-align: center;
-    padding: 14px 20px;
+    padding: 12px 20px;
     text-decoration: none;
 }
 
@@ -45,7 +46,7 @@ body {
     padding: 20px;
     box-shadow: 0 0 15px rgba(0,0,0,0.2);
     z-index: 1000;
-    width: 300px;
+    width: min(90vw, 320px);
     height: auto;
     max-height: 80vh;
     overflow-y: auto;
@@ -95,8 +96,8 @@ body {
 }
 
 #dodaj-korisnika-btn {
-    padding: 8px 15px;
-    font-size: 14px;
+    padding: clamp(4px, 0.6vw, 8px) clamp(8px, 1.2vw, 16px);
+    font-size: clamp(12px, 1.1vw, 16px);
     border-radius: 5px;
     background-color: #d3d3d3;
     color: black;
@@ -107,15 +108,16 @@ body {
 
 #pretraga-korisnika {
     margin: 10px 0;
-    padding: 8px;
+    padding: clamp(4px, 0.6vw, 8px) clamp(8px, 1.2vw, 16px);
     border-radius: 5px;
     border: 1px solid #ccc;
+    font-size: clamp(11px, 1vw, 15px);
 }
 
 button.update-btn,
 button.delete-btn {
     padding: 5px 10px;
-    font-size: 12px;
+    font-size: clamp(10px, 0.8vw, 13px);
     cursor: pointer;
     flex: 0 1 auto;
     width: auto;
@@ -165,19 +167,22 @@ button.delete-btn:hover {
     text-align: left;
     padding: 0 10px;
     flex-direction: column;
-    font-size: 14px;
+    font-size: clamp(11px, 0.95vw, 15px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .col-ime { flex-basis: 10%; }
-.col-email { flex-basis: 12%; }
+.col-email { flex-basis: 15%; }
 .col-telefon { flex-basis: 8%; }
 .col-adresa { flex-basis: 12%; }
 .col-grad { flex-basis: 8%; }
 .col-registracija { flex-basis: 10%; }
 .col-odjava { flex-basis: 10%; }
 .col-spremnici { flex-basis: 8%; }
-.col-podrucje { flex-basis: 8%; }
-.col-akcije { flex-basis: 10%; }
+.col-podrucje { flex-basis: 7%; }
+.col-akcije { flex-basis: 15%; }
 
 .update-btn, .delete-btn {
     margin: 5px;
