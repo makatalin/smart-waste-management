@@ -121,6 +121,7 @@ button.delete-btn {
     cursor: pointer;
     flex: 0 1 auto;
     width: auto;
+    margin: 5px;
     height: 30px;
     color: black;
     border: none;
@@ -167,9 +168,6 @@ button.delete-btn:hover {
     padding: 0 10px;
     flex-direction: column;
     font-size: clamp(11px, 0.95vw, 15px);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
 }
 
 .col-ime { flex-basis: 10%; }
@@ -183,29 +181,25 @@ button.delete-btn:hover {
 .col-podrucje { flex-basis: 7%; }
 .col-akcije { flex-basis: 15%; }
 
+.col-adresa {
+    position: relative;
+    overflow: visible;
+}
+
 .col-adresa .address-text {
     display: block;
+    max-width: 100%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-.update-btn, .delete-btn {
-    margin: 5px;
-    padding: 5px 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-}
-
 .col-adresa::after {
     content: attr(data-full-address);
     position: absolute;
-    left: 0;
-    top: 100%;
-    transform: translateY(-20px);
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-4px);
     white-space: nowrap;
     background-color: #333;
     color: #fff;
@@ -216,6 +210,7 @@ button.delete-btn:hover {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
     visibility: hidden;
 }
+
 
 .col-adresa[data-full-address]:hover::after {
     visibility: visible;
