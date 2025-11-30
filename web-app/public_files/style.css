@@ -319,7 +319,7 @@ button.delete-btn:hover {
 }
   
 .highlight {
-    font-weight: bold;
+    /*font-weight: bold;*/
     color: #f13636; /* Lagano crvena boja */
 }
 
