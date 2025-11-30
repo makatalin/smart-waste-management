@@ -469,16 +469,16 @@ function addSpremnikNaslovi() {
   naslovDiv.className = 'spremnik-naslov spremnik-item';
 
   naslovDiv.innerHTML = `
-      <span class="col-naziv">Name</span>
-      <span class="col-napunjenost">Fill %</span>
+      <span class="col-naziv">Bin</span>
+      <span class="col-napunjenost">Fill</span>
       <span class="col-polozaj">Position</span>
-      <span class="col-temperatura">Temp °C</span>
+      <span class="col-temperatura">Temp</span>
       <span class="col-plamen">Flame</span>
       <span class="col-dim">Smoke</span>
       <span class="col-baterija">Battery</span>
       <span class="col-adresa">Address</span>
       <span class="col-podrucje">Area</span>
-      <span class="col-vrsta">Waste type</span>
+      <span class="col-vrsta">Waste</span>
       <span class="col-akcije"></span>
   `;
 
@@ -972,17 +972,17 @@ async function checkFillLevels() {
   const avgFill0to50 = bins0to50 ? (totalFill0to50 / bins0to50).toFixed(2) : '0';
 
   document.getElementById('total-bins-count').textContent = `Total: ${totalBins}`;
-  document.getElementById('overturned-bins-count').textContent = `Tipped over: ${overturnedBins}`;
+  document.getElementById('overturned-bins-count').textContent = `Overturned: ${overturnedBins}`;
   document.getElementById('high-temp-count').textContent = `Above 80°C: ${highTempCount}`;
   document.getElementById('fire-detected').textContent = `Flame: ${fireDetected}`;
   document.getElementById('smoke-detected').textContent = `Smoke: ${smokeDetected}`;
   document.getElementById('pozar').textContent = `Fire: ${pozarCount}`;
   document.getElementById('bins-75-count').textContent = `Total: ${bins75}`;
-  document.getElementById('avg-fill-75').textContent = `Average fill level: ${avgFill75}%`;
+  document.getElementById('avg-fill-75').textContent = `Avg fill: ${avgFill75}%`;
   document.getElementById('bins-51-74-count').textContent = `Total: ${bins51to74}`;
-  document.getElementById('avg-fill-51-74').textContent = `Average fill level: ${avgFill51to74}%`;
+  document.getElementById('avg-fill-51-74').textContent = `Avg fill: ${avgFill51to74}%`;
   document.getElementById('bins-0-50-count').textContent = `Total: ${bins0to50}`;
-  document.getElementById('avg-fill-0-50').textContent = `Average fill level: ${avgFill0to50}%`;
+  document.getElementById('avg-fill-0-50').textContent = `Avg fill: ${avgFill0to50}%`;
 
   const pozarRow = document.getElementById('pozar');
   if (pozarCount > 0) {
