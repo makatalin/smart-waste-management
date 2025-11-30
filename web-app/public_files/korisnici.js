@@ -208,15 +208,15 @@ function displayUsers(usersToDisplay) {
     const headerDiv = document.createElement('div');
     headerDiv.className = 'korisnik-red korisnik-zaglavlje';
     headerDiv.innerHTML = `
-        <div class="korisnik-stupac col-ime">Ime i Prezime</div>
+        <div class="korisnik-stupac col-ime">Name</div>
         <div class="korisnik-stupac col-email">Email</div>
-        <div class="korisnik-stupac col-telefon">Telefon</div>
-        <div class="korisnik-stupac col-adresa">Adresa</div>
-        <div class="korisnik-stupac col-grad">Grad</div>
-        <div class="korisnik-stupac col-registracija">Datum Registracije</div>
-        <div class="korisnik-stupac col-odjava">Datum Odjave</div>
-        <div class="korisnik-stupac col-spremnici">Spremnici</div>
-        <div class="korisnik-stupac col-podrucje">Područje</div>
+        <div class="korisnik-stupac col-telefon">Phone</div>
+        <div class="korisnik-stupac col-adresa">Adress</div>
+        <div class="korisnik-stupac col-grad">City</div>
+        <div class="korisnik-stupac col-registracija">Registered</div>
+        <div class="korisnik-stupac col-odjava">Deactivated</div>
+        <div class="korisnik-stupac col-spremnici">Bins</div>
+        <div class="korisnik-stupac col-podrucje">Area</div>
         <div class="korisnik-stupac col-akcije"></div>
     `;
     usersList.appendChild(headerDiv);
