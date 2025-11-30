@@ -184,6 +184,8 @@ button.delete-btn:hover {
 .col-adresa {
     position: relative;
     overflow: visible;
+    flex: 0 0 clamp(90px, 12vw, 150px);
+    max-width: clamp(90px, 12vw, 150px);
 }
 
 .col-adresa .address-text {
