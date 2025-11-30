@@ -162,7 +162,7 @@ export function filterAndSortBins(bins, searchTerm) {
       binsToDisplay = binsToDisplay.filter(bin => {
           const matchesNaziv = bin.naziv.toLowerCase().includes(searchTerm);
           const matchesNapunjenost = bin.ocitanja && bin.ocitanja.some(ocitanje => ocitanje.napunjenost.toString().includes(searchTerm));
-          const matchesPolozaj = bin.ocitanja && bin.ocitanja.some(ocitanje => ocitanje.polozaj ? 'overturned'.includes(searchTerm) : 'upright'.includes(searchTerm));
+          const matchesPolozaj = bin.ocitanja && bin.ocitanja.some(ocitanje => ocitanje.polozaj ? 'tipped'.includes(searchTerm) : 'upright'.includes(searchTerm));
           const matchesTemperatura = bin.ocitanja && bin.ocitanja.some(ocitanje => ocitanje.temperatura.toString().includes(searchTerm));
           const matchesPlamen = bin.ocitanja && bin.ocitanja.some(ocitanje => ocitanje.plamen ? 'yes'.includes(searchTerm) : 'no'.includes(searchTerm));
           const matchesDim = bin.ocitanja && bin.ocitanja.some(ocitanje => ocitanje.dim ? 'yes'.includes(searchTerm) : 'no'.includes(searchTerm));
@@ -600,9 +600,13 @@ async function createBinDiv(bin) {
 
     binDiv.innerHTML = `
     <span class="col-naziv bold">${bin.naziv}</span>
-    <span class="col-napunjenost ${napunjenostClass}">${latestReading.napunjenost !== undefined ? latestReading.napunjenost : 'N/A'}%</span>
-    <span class="col-polozaj ${latestReading.polozaj ? 'highlight' : ''}">${latestReading.polozaj ? 'Overturned' : 'Upright'}</span>
-    <span class="col-temperatura ${latestReading.temperatura > 80 ? 'highlight' : ''}">${latestReading.temperatura || 'N/A'}°C</span>
+    <span class="col-napunjenost ${napunjenostClass}">
+        ${latestReading.napunjenost !== undefined ? Math.round(latestReading.napunjenost) : 'N/A'}%
+    </span>
+    <span class="col-polozaj ${latestReading.polozaj ? 'highlight' : ''}">${latestReading.polozaj ? 'Tipped' : 'Upright'}</span>
+    <span class="col-temperatura ${latestReading.temperatura > 80 ? 'highlight' : ''}">
+        ${latestReading.temperatura !== undefined ? Math.round(latestReading.temperatura) : 'N/A'}°C
+    </span>
     <span class="col-plamen ${latestReading.plamen ? 'highlight blink-row' : ''}">${latestReading.plamen ? 'Yes' : 'No'}</span>
     <span class="col-dim ${latestReading.dim ? 'highlight' : ''}">${latestReading.dim ? 'Yes' : 'No'}</span>
     <span class="col-baterija ${latestReading.baterija < 10 ? 'highlight' : ''}">${latestReading.baterija || 'N/A'}%</span>
@@ -967,12 +971,12 @@ async function checkFillLevels() {
     }
   }
 
-  const avgFill75 = bins75 ? (totalFill75 / bins75).toFixed(2) : '0';
-  const avgFill51to74 = bins51to74 ? (totalFill51to74 / bins51to74).toFixed(2) : '0';
-  const avgFill0to50 = bins0to50 ? (totalFill0to50 / bins0to50).toFixed(2) : '0';
+  const avgFill75 = bins75 ? (totalFill75 / bins75).toFixed(0) : '0';
+  const avgFill51to74 = bins51to74 ? (totalFill51to74 / bins51to74).toFixed(0) : '0';
+  const avgFill0to50 = bins0to50 ? (totalFill0to50 / bins0to50).toFixed(0) : '0';
 
   document.getElementById('total-bins-count').textContent = `Total: ${totalBins}`;
-  document.getElementById('overturned-bins-count').textContent = `Overturned: ${overturnedBins}`;
+  document.getElementById('overturned-bins-count').textContent = `Tipped: ${overturnedBins}`;
   document.getElementById('high-temp-count').textContent = `Above 80°C: ${highTempCount}`;
   document.getElementById('fire-detected').textContent = `Flame: ${fireDetected}`;
   document.getElementById('smoke-detected').textContent = `Smoke: ${smokeDetected}`;
