@@ -606,7 +606,9 @@ async function createBinDiv(bin) {
     <span class="col-plamen ${latestReading.plamen ? 'highlight blink-row' : ''}">${latestReading.plamen ? 'Yes' : 'No'}</span>
     <span class="col-dim ${latestReading.dim ? 'highlight' : ''}">${latestReading.dim ? 'Yes' : 'No'}</span>
     <span class="col-baterija ${latestReading.baterija < 10 ? 'highlight' : ''}">${latestReading.baterija || 'N/A'}%</span>
-    <span class="col-adresa" data-full-address="${bin.address || 'N/A'}">${bin.address || 'N/A'}</span>
+    <span class="col-adresa" data-full-address="${bin.address || 'N/A'}">
+        <span class="col-adresa-text">${bin.address || 'N/A'}</span>
+    </span>
     <span class="col-podrucje">${bin.podrucje || 'N/A'}</span>
     <span class="col-vrsta">${
       bin.vrsta_otpad === 'Plastika' ? 'Plastic' :
