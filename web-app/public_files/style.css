@@ -144,11 +144,9 @@ input.error {
 /* Tooltip ako se ne vidi cijela adresa */
 .col-adresa {
     position: relative;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
     max-width: calc(100% - 6px);
     margin-right: 6px;
+    overflow: visible; /* allow tooltip box to extend outside */
 }
 
 .col-adresa::after {
@@ -177,6 +175,12 @@ input.error {
     visibility: visible;
 }
 
+.col-adresa-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+}
 
 .spremnik-item .actions {
     display: flex;
