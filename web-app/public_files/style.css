@@ -82,16 +82,16 @@ input.error {
     box-sizing: border-box;
 }
 
-.col-naziv { flex-basis: 16%; min-width: 50px; }
-.col-napunjenost { flex-basis: 9%; min-width: 30px; }
-.col-polozaj { flex-basis: 16%; min-width: 50px; }
-.col-temperatura { flex-basis: 8%; min-width: 60px; }
-.col-plamen { flex-basis: 6%; min-width: 50px; }
+.col-naziv { flex-basis: 13%; min-width: 50px; }
+.col-napunjenost { flex-basis: 7%; min-width: 30px; }
+.col-polozaj { flex-basis: 9%; min-width: 50px; }
+.col-temperatura { flex-basis: 8%; min-width: 6px; }
+.col-plamen { flex-basis: 6%; min-width: 45px; }
 .col-dim { flex-basis:6%; min-width: 50px; }
-.col-baterija { flex-basis: 6%; min-width: 60px; }
+.col-baterija { flex-basis: 6%; min-width: 55px; }
 .col-adresa { flex-basis: 20%; min-width: 100px; }
 .col-podrucje { flex-basis: 10%; min-width: 50px; }
-.col-vrsta { flex-basis: 15%; min-width: 50px; }
+.col-vrsta { flex-basis: 8%; min-width: 50px; }
 .col-akcije { flex-basis: 5%; min-width: 85px; }
 
 /* Postavke za kolone */
