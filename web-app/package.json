@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "jest"
   },
   "keywords": [],
   "author": "Mario Katalinic",
@@ -27,6 +28,7 @@
   },
   "description": "",
   "devDependencies": {
-    "@flydotio/dockerfile": "^0.5.9"
+    "@flydotio/dockerfile": "^0.5.9",
+    "jest": "^30.0.5"
   }
 }
