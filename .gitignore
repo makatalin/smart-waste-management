@@ -1,0 +1,13 @@
+# Paketi
+node_modules/
+
+# Environment varijable (tajne!)
+.env
+
+# Logovi
+*.log
+
+# OS datoteke
+.DS_Store
+Thumbs.db
+
