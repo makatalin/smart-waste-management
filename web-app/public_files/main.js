@@ -169,7 +169,17 @@ export function filterAndSortBins(bins, searchTerm) {
           const matchesBaterija = bin.ocitanja && bin.ocitanja.some(ocitanje => ocitanje.baterija.toString().includes(searchTerm));
           const matchesAdresa = bin.address && bin.address.toLowerCase().includes(searchTerm);
           const matchesPodrucje = bin.podrucje && bin.podrucje.toLowerCase().includes(searchTerm);
-          const matchesVrstaOtpada = bin.vrsta_otpad && bin.vrsta_otpad.toLowerCase().includes(searchTerm);
+          const matchesVrstaOtpada = bin.vrsta_otpad && (
+            bin.vrsta_otpad.toLowerCase().includes(searchTerm) ||
+            (
+              bin.vrsta_otpad === 'Plastika' ? 'plastic' :
+              bin.vrsta_otpad === 'Papir' ? 'paper' :
+              bin.vrsta_otpad === 'Staklo' ? 'glass' :
+              bin.vrsta_otpad === 'Biootpad' ? 'bio' :
+              bin.vrsta_otpad === 'Ostalo' ? 'other' :
+              ''
+            ).includes(searchTerm)
+          );
 
           const matches = (
               matchesNaziv ||
