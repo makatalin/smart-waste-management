@@ -300,7 +300,14 @@ function displayWasteVolumePieChart(canvasId, data) {
     }
 
     const ctx = document.getElementById(canvasId).getContext('2d');
-    const formattedLabels = data.labels;
+    const formattedLabels = data.labels.map(label =>
+      label === 'Plastika' ? 'Plastic' :
+      label === 'Papir' ? 'Paper' :
+      label === 'Staklo' ? 'Glass' :
+      label === 'Biootpad' ? 'Bio' :
+      label === 'Ostalo' ? 'Other' :
+      label
+    );
     const formattedData = data.values;
 
     assignColorsToContainers(formattedLabels);
