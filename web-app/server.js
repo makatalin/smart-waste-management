@@ -4,6 +4,11 @@ const port = process.env.PORT || 3000;
 
 require('dotenv').config();
 
+// Redirect all traffic to the current app
+app.use((req, res) => {
+  res.redirect(301, "https://smart-waste-mgmt-v2.fly.dev");
+});
+
 app.use(express.json());
 
 // Inicijalizacija globalne varijable za praćenje SSE klijenata
